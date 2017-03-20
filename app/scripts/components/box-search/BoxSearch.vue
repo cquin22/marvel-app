@@ -1,5 +1,10 @@
 <template>
-    <div>search</div>
+    <div>
+        <div class="box-search">
+            <i class="icon-magnifier-tool"></i>
+            <input class="search" type="text" />
+        </div>
+    </div>
 </template>
 
 <script>

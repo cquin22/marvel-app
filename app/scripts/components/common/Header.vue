@@ -7,7 +7,7 @@
                         <v-col xs12="xs12" sm3="sm3">
                             <img class="logo" src="./img/logo.png"/>
                         </v-col>
-                        <v-col xs12="xs12" sm5="sm5">
+                        <v-col xs12="xs12" sm6="sm6">
                             <box-search></box-search>
                         </v-col>
                     </v-row>
