@@ -2,6 +2,8 @@ import Vue from 'vue';
 import router from './Router';
 import App from './Main.vue';
 import Vuetify from 'vuetify';
+import Vuex from 'vuex';
+import VueResource from 'vue-resource';
 
 /**
  * The main class when run the application
@@ -9,6 +11,8 @@ import Vuetify from 'vuetify';
  * @date: 03 - 19 - 2017
 */
 Vue.use(Vuetify);
+Vue.use(Vuex);
+Vue.use(VueResource);
 
 /* Create and Mount our Vue instance */
 new Vue({

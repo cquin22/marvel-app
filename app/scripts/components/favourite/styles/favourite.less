@@ -1,0 +1,30 @@
+.box-favourite{
+  text-align: center;
+  position: relative;
+  margin-top: 30px;
+  p{
+    font-weight: bold;
+    color: #333;
+    font-size: 16px;
+    line-height: 21px;
+  }
+  .box-ico-trash{
+    width: 30px;
+    height: 30px;
+    background: @secoundary_color;
+    border-radius: 50%;
+    text-align: center;
+    position: absolute;
+    right: 10px;
+    top: -10px;
+    .app-transition(all, 0.5s, ease-in-out );
+    &:hover{
+      cursor: pointer;
+      background: @marvel_color;
+    }
+    i{
+      color: white;
+      line-height: 30px;
+    }
+  }
+}

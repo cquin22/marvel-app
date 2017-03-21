@@ -21,6 +21,6 @@
             return {
                 states: ["ewfsd","fsdfsd","fsdf","fsd","fsd"]
             }
-        },
+        }
     }
 </script>
