@@ -21,12 +21,12 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-b9c10554", __vue__options__)
+    hotAPI.createRecord("data-v-21689d5c", __vue__options__)
   } else {
-    hotAPI.reload("data-v-b9c10554", __vue__options__)
+    hotAPI.reload("data-v-21689d5c", __vue__options__)
   }
 })()}
-},{"vue":41,"vue-hot-reload-api":37}],2:[function(require,module,exports){
+},{"vue":21,"vue-hot-reload-api":17}],2:[function(require,module,exports){
 'use strict';
 
 var _vue = require('vue');
@@ -45,10 +45,6 @@ var _vuetify = require('vuetify');
 
 var _vuetify2 = _interopRequireDefault(_vuetify);
 
-var _vuex = require('vuex');
-
-var _vuex2 = _interopRequireDefault(_vuex);
-
 var _vueResource = require('vue-resource');
 
 var _vueResource2 = _interopRequireDefault(_vueResource);
@@ -56,6 +52,10 @@ var _vueResource2 = _interopRequireDefault(_vueResource);
 var _vuePaginate = require('vue-paginate');
 
 var _vuePaginate2 = _interopRequireDefault(_vuePaginate);
+
+var _HeroesStore = require('./components/store/HeroesStore.js');
+
+var _HeroesStore2 = _interopRequireDefault(_HeroesStore);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -65,7 +65,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * @date: 03 - 19 - 2017
 */
 _vue2.default.use(_vuetify2.default);
-_vue2.default.use(_vuex2.default);
+//import Vuex from 'vuex';
+
 _vue2.default.use(_vueResource2.default);
 _vue2.default.use(_vuePaginate2.default);
 
@@ -75,12 +76,13 @@ new _vue2.default({
         window.Vue = this;
     },
     router: _Router2.default,
+    store: _HeroesStore2.default,
     render: function render(h) {
         return h(_Main2.default);
     }
 }).$mount('#app');
 
-},{"./Main.vue":4,"./Router":5,"vue":41,"vue-paginate":38,"vue-resource":39,"vuetify":42,"vuex":43}],3:[function(require,module,exports){
+},{"./Main.vue":4,"./Router":5,"./components/store/HeroesStore.js":14,"vue":21,"vue-paginate":18,"vue-resource":19,"vuetify":22}],3:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -134,12 +136,12 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-63b4eb2b", __vue__options__)
+    hotAPI.createRecord("data-v-a2e06836", __vue__options__)
   } else {
-    hotAPI.reload("data-v-63b4eb2b", __vue__options__)
+    hotAPI.reload("data-v-a2e06836", __vue__options__)
   }
 })()}
-},{"./components/common/Footer.vue":7,"./components/common/Header.vue":8,"vue":41,"vue-hot-reload-api":37}],5:[function(require,module,exports){
+},{"./components/common/Footer.vue":7,"./components/common/Header.vue":8,"vue":21,"vue-hot-reload-api":17}],5:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -187,35 +189,200 @@ var router = new _vueRouter2.default({
 
 exports.default = router;
 
-},{"./404.vue":1,"./components/common/HomeApp.vue":9,"vue":41,"vue-router":40}],6:[function(require,module,exports){
+},{"./404.vue":1,"./components/common/HomeApp.vue":9,"vue":21,"vue-router":20}],6:[function(require,module,exports){
 ;(function(){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 exports.default = {
-    data: function data() {
-        return {};
+  data: function data() {
+    return {
+      search: ''
+    };
+  },
+
+  watch: {
+    search: function search(val, oldVal) {
+      var obj = [{
+        "id": 1011334,
+        "name": "3-D Man",
+        "description": "",
+        "modified": "2014-04-29T14:18:17-0400",
+        "thumbnail": {
+          "path": "http://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784",
+          "extension": "jpg"
+        },
+        "resourceURI": "http://gateway.marvel.com/v1/public/characters/1011334",
+        "comics": {
+          "available": 11,
+          "collectionURI": "http://gateway.marvel.com/v1/public/characters/1011334/comics",
+          "items": [{
+            "resourceURI": "http://gateway.marvel.com/v1/public/comics/21366",
+            "name": "Avengers: The Initiative (2007) #14"
+          }, {
+            "resourceURI": "http://gateway.marvel.com/v1/public/comics/24571",
+            "name": "Avengers: The Initiative (2007) #14 (SPOTLIGHT VARIANT)"
+          }, {
+            "resourceURI": "http://gateway.marvel.com/v1/public/comics/21546",
+            "name": "Avengers: The Initiative (2007) #15"
+          }, {
+            "resourceURI": "http://gateway.marvel.com/v1/public/comics/21741",
+            "name": "Avengers: The Initiative (2007) #16"
+          }, {
+            "resourceURI": "http://gateway.marvel.com/v1/public/comics/21975",
+            "name": "Avengers: The Initiative (2007) #17"
+          }, {
+            "resourceURI": "http://gateway.marvel.com/v1/public/comics/22299",
+            "name": "Avengers: The Initiative (2007) #18"
+          }, {
+            "resourceURI": "http://gateway.marvel.com/v1/public/comics/22300",
+            "name": "Avengers: The Initiative (2007) #18 (ZOMBIE VARIANT)"
+          }, {
+            "resourceURI": "http://gateway.marvel.com/v1/public/comics/22506",
+            "name": "Avengers: The Initiative (2007) #19"
+          }, {
+            "resourceURI": "http://gateway.marvel.com/v1/public/comics/10223",
+            "name": "Marvel Premiere (1972) #35"
+          }, {
+            "resourceURI": "http://gateway.marvel.com/v1/public/comics/10224",
+            "name": "Marvel Premiere (1972) #36"
+          }, {
+            "resourceURI": "http://gateway.marvel.com/v1/public/comics/10225",
+            "name": "Marvel Premiere (1972) #37"
+          }],
+          "returned": 11
+        },
+        "series": {
+          "available": 2,
+          "collectionURI": "http://gateway.marvel.com/v1/public/characters/1011334/series",
+          "items": [{
+            "resourceURI": "http://gateway.marvel.com/v1/public/series/1945",
+            "name": "Avengers: The Initiative (2007 - 2010)"
+          }, {
+            "resourceURI": "http://gateway.marvel.com/v1/public/series/2045",
+            "name": "Marvel Premiere (1972 - 1981)"
+          }],
+          "returned": 2
+        },
+        "stories": {
+          "available": 17,
+          "collectionURI": "http://gateway.marvel.com/v1/public/characters/1011334/stories",
+          "items": [{
+            "resourceURI": "http://gateway.marvel.com/v1/public/stories/19947",
+            "name": "Cover #19947",
+            "type": "cover"
+          }, {
+            "resourceURI": "http://gateway.marvel.com/v1/public/stories/19948",
+            "name": "The 3-D Man!",
+            "type": "interiorStory"
+          }, {
+            "resourceURI": "http://gateway.marvel.com/v1/public/stories/19949",
+            "name": "Cover #19949",
+            "type": "cover"
+          }, {
+            "resourceURI": "http://gateway.marvel.com/v1/public/stories/19950",
+            "name": "The Devil's Music!",
+            "type": "interiorStory"
+          }, {
+            "resourceURI": "http://gateway.marvel.com/v1/public/stories/19951",
+            "name": "Cover #19951",
+            "type": "cover"
+          }, {
+            "resourceURI": "http://gateway.marvel.com/v1/public/stories/19952",
+            "name": "Code-Name:  The Cold Warrior!",
+            "type": "interiorStory"
+          }, {
+            "resourceURI": "http://gateway.marvel.com/v1/public/stories/47185",
+            "name": "Avengers: The Initiative (2007) #14 - Int",
+            "type": "interiorStory"
+          }, {
+            "resourceURI": "http://gateway.marvel.com/v1/public/stories/47499",
+            "name": "Avengers: The Initiative (2007) #15 - Int",
+            "type": "interiorStory"
+          }, {
+            "resourceURI": "http://gateway.marvel.com/v1/public/stories/47792",
+            "name": "Avengers: The Initiative (2007) #16",
+            "type": "cover"
+          }, {
+            "resourceURI": "http://gateway.marvel.com/v1/public/stories/47793",
+            "name": "Avengers: The Initiative (2007) #16 - Int",
+            "type": "interiorStory"
+          }, {
+            "resourceURI": "http://gateway.marvel.com/v1/public/stories/48362",
+            "name": "Avengers: The Initiative (2007) #17 - Int",
+            "type": "interiorStory"
+          }, {
+            "resourceURI": "http://gateway.marvel.com/v1/public/stories/49104",
+            "name": "Avengers: The Initiative (2007) #18 - Int",
+            "type": "interiorStory"
+          }, {
+            "resourceURI": "http://gateway.marvel.com/v1/public/stories/49106",
+            "name": "Avengers: The Initiative (2007) #18, Zombie Variant - Int",
+            "type": "interiorStory"
+          }, {
+            "resourceURI": "http://gateway.marvel.com/v1/public/stories/49888",
+            "name": "Avengers: The Initiative (2007) #19",
+            "type": "cover"
+          }, {
+            "resourceURI": "http://gateway.marvel.com/v1/public/stories/49889",
+            "name": "Avengers: The Initiative (2007) #19 - Int",
+            "type": "interiorStory"
+          }, {
+            "resourceURI": "http://gateway.marvel.com/v1/public/stories/54371",
+            "name": "Avengers: The Initiative (2007) #14, Spotlight Variant - Int",
+            "type": "interiorStory"
+          }, {
+            "resourceURI": "http://gateway.marvel.com/v1/public/stories/96303",
+            "name": "Deadpool (1997) #44",
+            "type": "interiorStory"
+          }],
+          "returned": 17
+        },
+        "events": {
+          "available": 1,
+          "collectionURI": "http://gateway.marvel.com/v1/public/characters/1011334/events",
+          "items": [{
+            "resourceURI": "http://gateway.marvel.com/v1/public/events/269",
+            "name": "Secret Invasion"
+          }],
+          "returned": 1
+        },
+        "urls": [{
+          "type": "detail",
+          "url": "http://marvel.com/characters/74/3-d_man?utm_campaign=apiRef&utm_source=62ed700024d09af2b0eda474e3a72df2"
+        }, {
+          "type": "wiki",
+          "url": "http://marvel.com/universe/3-D_Man_(Chandler)?utm_campaign=apiRef&utm_source=62ed700024d09af2b0eda474e3a72df2"
+        }, {
+          "type": "comiclink",
+          "url": "http://marvel.com/comics/characters/1011334/3-d_man?utm_campaign=apiRef&utm_source=62ed700024d09af2b0eda474e3a72df2"
+        }]
+      }];
+
+
+      this.$store.state.updateHeroes(obj);
     }
+  }
 };
 })()
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _vm._m(0)}
-__vue__options__.staticRenderFns = [function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('div',{staticClass:"box-search"},[_c('i',{staticClass:"icon-magnifier-tool"}),_vm._v(" "),_c('input',{staticClass:"search",attrs:{"type":"text"}})])])}]
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('div',{staticClass:"box-search"},[_c('i',{staticClass:"icon-magnifier-tool"}),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.search),expression:"search"}],staticClass:"search",attrs:{"type":"text"},domProps:{"value":(_vm.search)},on:{"input":function($event){if($event.target.composing){ return; }_vm.search=$event.target.value}}})])])}
+__vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-47bfce65", __vue__options__)
+    hotAPI.createRecord("data-v-3a0f6d2a", __vue__options__)
   } else {
-    hotAPI.reload("data-v-47bfce65", __vue__options__)
+    hotAPI.reload("data-v-3a0f6d2a", __vue__options__)
   }
 })()}
-},{"vue":41,"vue-hot-reload-api":37}],7:[function(require,module,exports){
+},{"vue":21,"vue-hot-reload-api":17}],7:[function(require,module,exports){
 ;(function(){
 "use strict";
 
@@ -238,12 +405,12 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-12a52058", __vue__options__)
+    hotAPI.createRecord("data-v-6a726012", __vue__options__)
   } else {
-    hotAPI.reload("data-v-12a52058", __vue__options__)
+    hotAPI.reload("data-v-6a726012", __vue__options__)
   }
 })()}
-},{"vue":41,"vue-hot-reload-api":37}],8:[function(require,module,exports){
+},{"vue":21,"vue-hot-reload-api":17}],8:[function(require,module,exports){
 ;(function(){
 'use strict';
 
@@ -275,12 +442,12 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-33d7844a", __vue__options__)
+    hotAPI.createRecord("data-v-e8b677f8", __vue__options__)
   } else {
-    hotAPI.reload("data-v-33d7844a", __vue__options__)
+    hotAPI.reload("data-v-e8b677f8", __vue__options__)
   }
 })()}
-},{"../box-search/BoxSearch.vue":6,"vue":41,"vue-hot-reload-api":37}],9:[function(require,module,exports){
+},{"../box-search/BoxSearch.vue":6,"vue":21,"vue-hot-reload-api":17}],9:[function(require,module,exports){
 ;(function(){
 'use strict';
 
@@ -300,15 +467,9 @@ var _Aside = require('../favourite/Aside.vue');
 
 var _Aside2 = _interopRequireDefault(_Aside);
 
-var _HeroesStore = require('../store/HeroesStore');
-
-var _HeroesStore2 = _interopRequireDefault(_HeroesStore);
-
 var _Constants = require('../../Constants');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var heroes = new _HeroesStore2.default();
 
 exports.default = {
     components: { ShortBy: _ShortBy2.default, Hero: _Hero2.default, AsideLeft: _Aside2.default },
@@ -316,9 +477,9 @@ exports.default = {
     created: function created() {
         var _this = this;
 
-        this.$http.get(_Constants.CONFIG.URL_BASE + '?limit=100&ts=1&apikey=' + _Constants.CONFIG.API_KEY + '&hash=' + _Constants.CONFIG.HASH).then(function (response) {
+        this.$http.get(_Constants.CONFIG.URL_BASE + '?limit=5&ts=1&apikey=' + _Constants.CONFIG.API_KEY + '&hash=' + _Constants.CONFIG.HASH).then(function (response) {
             _this.isLoad = true;
-            heroes.setHeroes(response.body.data.results);
+            _this.$store.state.setHeroes(response.body.data.results);
         }, function (response) {
             console.log(response);
         });
@@ -326,8 +487,7 @@ exports.default = {
     data: function data() {
         return {
             isLoad: false,
-            heroes: heroes.state.heroes,
-            items: ['Item One', 'Item Two', 'Item Three', 'Item Four', 'Item Five', 'Item Six', 'Item Seven', 'Item Eight', 'Item Nine', 'Item Ten', 'Item Eleven', 'Item Twelve', 'Item Thirteen'],
+            heroes: this.$store.state.heroes,
             paginate: ['heroes']
         };
     },
@@ -349,12 +509,12 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-8675b556", __vue__options__)
+    hotAPI.createRecord("data-v-5e9fdcdb", __vue__options__)
   } else {
-    hotAPI.reload("data-v-8675b556", __vue__options__)
+    hotAPI.reload("data-v-5e9fdcdb", __vue__options__)
   }
 })()}
-},{"../../Constants":3,"../favourite/Aside.vue":10,"../hero/Hero.vue":12,"../short-by/ShortBy.vue":13,"../store/HeroesStore":14,"vue":41,"vue-hot-reload-api":37}],10:[function(require,module,exports){
+},{"../../Constants":3,"../favourite/Aside.vue":10,"../hero/Hero.vue":12,"../short-by/ShortBy.vue":13,"vue":21,"vue-hot-reload-api":17}],10:[function(require,module,exports){
 ;(function(){
 'use strict';
 
@@ -385,12 +545,12 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-12787631", __vue__options__)
+    hotAPI.createRecord("data-v-a816a12a", __vue__options__)
   } else {
-    hotAPI.reload("data-v-12787631", __vue__options__)
+    hotAPI.reload("data-v-a816a12a", __vue__options__)
   }
 })()}
-},{"./Favorite.vue":11,"vue":41,"vue-hot-reload-api":37}],11:[function(require,module,exports){
+},{"./Favorite.vue":11,"vue":21,"vue-hot-reload-api":17}],11:[function(require,module,exports){
 ;(function(){
 "use strict";
 
@@ -413,12 +573,12 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-586dcc33", __vue__options__)
+    hotAPI.createRecord("data-v-d1155e8e", __vue__options__)
   } else {
-    hotAPI.reload("data-v-586dcc33", __vue__options__)
+    hotAPI.reload("data-v-d1155e8e", __vue__options__)
   }
 })()}
-},{"vue":41,"vue-hot-reload-api":37}],12:[function(require,module,exports){
+},{"vue":21,"vue-hot-reload-api":17}],12:[function(require,module,exports){
 ;(function(){
 'use strict';
 
@@ -450,12 +610,12 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-40b97f70", __vue__options__)
+    hotAPI.createRecord("data-v-74296d02", __vue__options__)
   } else {
-    hotAPI.reload("data-v-40b97f70", __vue__options__)
+    hotAPI.reload("data-v-74296d02", __vue__options__)
   }
 })()}
-},{"vue":41,"vue-hot-reload-api":37}],13:[function(require,module,exports){
+},{"vue":21,"vue-hot-reload-api":17}],13:[function(require,module,exports){
 ;(function(){
 "use strict";
 
@@ -480,283 +640,68 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-94aab63a", __vue__options__)
+    hotAPI.createRecord("data-v-4bb592e9", __vue__options__)
   } else {
-    hotAPI.reload("data-v-94aab63a", __vue__options__)
+    hotAPI.reload("data-v-4bb592e9", __vue__options__)
   }
 })()}
-},{"vue":41,"vue-hot-reload-api":37}],14:[function(require,module,exports){
-"use strict";
+},{"vue":21,"vue-hot-reload-api":17}],14:[function(require,module,exports){
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _classCallCheck2 = require("babel-runtime/helpers/classCallCheck");
+var _vue = require('vue');
 
-var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+var _vue2 = _interopRequireDefault(_vue);
 
-var _createClass2 = require("babel-runtime/helpers/createClass");
+var _vuex = require('vuex');
 
-var _createClass3 = _interopRequireDefault(_createClass2);
+var _vuex2 = _interopRequireDefault(_vuex);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var HeroesStore = function () {
-    function HeroesStore() {
-        (0, _classCallCheck3.default)(this, HeroesStore);
-
+/*
+export default class HeroesStore{
+    constructor(){
         this.state = {
             heroes: []
-        };
-    }
-
-    (0, _createClass3.default)(HeroesStore, [{
-        key: "setHeroes",
-        value: function setHeroes(data) {
-            console.log(data);
-            for (var i = 0; i < data.length; i++) {
-                this.state.heroes.push(data[i]);
-            }
         }
-    }]);
-    return HeroesStore;
-}();
-
-exports.default = HeroesStore;
-
-},{"babel-runtime/helpers/classCallCheck":16,"babel-runtime/helpers/createClass":17}],15:[function(require,module,exports){
-module.exports = { "default": require("core-js/library/fn/object/define-property"), __esModule: true };
-},{"core-js/library/fn/object/define-property":19}],16:[function(require,module,exports){
-"use strict";
-
-exports.__esModule = true;
-
-exports.default = function (instance, Constructor) {
-  if (!(instance instanceof Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-};
-},{}],17:[function(require,module,exports){
-"use strict";
-
-exports.__esModule = true;
-
-var _defineProperty = require("../core-js/object/define-property");
-
-var _defineProperty2 = _interopRequireDefault(_defineProperty);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = function () {
-  function defineProperties(target, props) {
-    for (var i = 0; i < props.length; i++) {
-      var descriptor = props[i];
-      descriptor.enumerable = descriptor.enumerable || false;
-      descriptor.configurable = true;
-      if ("value" in descriptor) descriptor.writable = true;
-      (0, _defineProperty2.default)(target, descriptor.key, descriptor);
     }
-  }
 
-  return function (Constructor, protoProps, staticProps) {
-    if (protoProps) defineProperties(Constructor.prototype, protoProps);
-    if (staticProps) defineProperties(Constructor, staticProps);
-    return Constructor;
-  };
-}();
-},{"../core-js/object/define-property":15}],18:[function(require,module,exports){
-
-},{}],19:[function(require,module,exports){
-require('../../modules/es6.object.define-property');
-var $Object = require('../../modules/_core').Object;
-module.exports = function defineProperty(it, key, desc){
-  return $Object.defineProperty(it, key, desc);
-};
-},{"../../modules/_core":22,"../../modules/es6.object.define-property":35}],20:[function(require,module,exports){
-module.exports = function(it){
-  if(typeof it != 'function')throw TypeError(it + ' is not a function!');
-  return it;
-};
-},{}],21:[function(require,module,exports){
-var isObject = require('./_is-object');
-module.exports = function(it){
-  if(!isObject(it))throw TypeError(it + ' is not an object!');
-  return it;
-};
-},{"./_is-object":31}],22:[function(require,module,exports){
-var core = module.exports = {version: '2.4.0'};
-if(typeof __e == 'number')__e = core; // eslint-disable-line no-undef
-},{}],23:[function(require,module,exports){
-// optional / simple context binding
-var aFunction = require('./_a-function');
-module.exports = function(fn, that, length){
-  aFunction(fn);
-  if(that === undefined)return fn;
-  switch(length){
-    case 1: return function(a){
-      return fn.call(that, a);
-    };
-    case 2: return function(a, b){
-      return fn.call(that, a, b);
-    };
-    case 3: return function(a, b, c){
-      return fn.call(that, a, b, c);
-    };
-  }
-  return function(/* ...args */){
-    return fn.apply(that, arguments);
-  };
-};
-},{"./_a-function":20}],24:[function(require,module,exports){
-// Thank's IE8 for his funny defineProperty
-module.exports = !require('./_fails')(function(){
-  return Object.defineProperty({}, 'a', {get: function(){ return 7; }}).a != 7;
-});
-},{"./_fails":27}],25:[function(require,module,exports){
-var isObject = require('./_is-object')
-  , document = require('./_global').document
-  // in old IE typeof document.createElement is 'object'
-  , is = isObject(document) && isObject(document.createElement);
-module.exports = function(it){
-  return is ? document.createElement(it) : {};
-};
-},{"./_global":28,"./_is-object":31}],26:[function(require,module,exports){
-var global    = require('./_global')
-  , core      = require('./_core')
-  , ctx       = require('./_ctx')
-  , hide      = require('./_hide')
-  , PROTOTYPE = 'prototype';
-
-var $export = function(type, name, source){
-  var IS_FORCED = type & $export.F
-    , IS_GLOBAL = type & $export.G
-    , IS_STATIC = type & $export.S
-    , IS_PROTO  = type & $export.P
-    , IS_BIND   = type & $export.B
-    , IS_WRAP   = type & $export.W
-    , exports   = IS_GLOBAL ? core : core[name] || (core[name] = {})
-    , expProto  = exports[PROTOTYPE]
-    , target    = IS_GLOBAL ? global : IS_STATIC ? global[name] : (global[name] || {})[PROTOTYPE]
-    , key, own, out;
-  if(IS_GLOBAL)source = name;
-  for(key in source){
-    // contains in native
-    own = !IS_FORCED && target && target[key] !== undefined;
-    if(own && key in exports)continue;
-    // export native or passed
-    out = own ? target[key] : source[key];
-    // prevent global pollution for namespaces
-    exports[key] = IS_GLOBAL && typeof target[key] != 'function' ? source[key]
-    // bind timers to global for call from export context
-    : IS_BIND && own ? ctx(out, global)
-    // wrap global constructors for prevent change them in library
-    : IS_WRAP && target[key] == out ? (function(C){
-      var F = function(a, b, c){
-        if(this instanceof C){
-          switch(arguments.length){
-            case 0: return new C;
-            case 1: return new C(a);
-            case 2: return new C(a, b);
-          } return new C(a, b, c);
-        } return C.apply(this, arguments);
-      };
-      F[PROTOTYPE] = C[PROTOTYPE];
-      return F;
-    // make static versions for prototype methods
-    })(out) : IS_PROTO && typeof out == 'function' ? ctx(Function.call, out) : out;
-    // export proto methods to core.%CONSTRUCTOR%.methods.%NAME%
-    if(IS_PROTO){
-      (exports.virtual || (exports.virtual = {}))[key] = out;
-      // export proto methods to core.%CONSTRUCTOR%.prototype.%NAME%
-      if(type & $export.R && expProto && !expProto[key])hide(expProto, key, out);
+    setHeroes (data){
+        console.log(data);
+        for (var i = 0; i < data.length; i++) {
+            this.state.heroes.push(data[i]);
+        }
     }
-  }
-};
-// type bitmap
-$export.F = 1;   // forced
-$export.G = 2;   // global
-$export.S = 4;   // static
-$export.P = 8;   // proto
-$export.B = 16;  // bind
-$export.W = 32;  // wrap
-$export.U = 64;  // safe
-$export.R = 128; // real proto method for `library` 
-module.exports = $export;
-},{"./_core":22,"./_ctx":23,"./_global":28,"./_hide":29}],27:[function(require,module,exports){
-module.exports = function(exec){
-  try {
-    return !!exec();
-  } catch(e){
-    return true;
-  }
-};
-},{}],28:[function(require,module,exports){
-// https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
-var global = module.exports = typeof window != 'undefined' && window.Math == Math
-  ? window : typeof self != 'undefined' && self.Math == Math ? self : Function('return this')();
-if(typeof __g == 'number')__g = global; // eslint-disable-line no-undef
-},{}],29:[function(require,module,exports){
-var dP         = require('./_object-dp')
-  , createDesc = require('./_property-desc');
-module.exports = require('./_descriptors') ? function(object, key, value){
-  return dP.f(object, key, createDesc(1, value));
-} : function(object, key, value){
-  object[key] = value;
-  return object;
-};
-},{"./_descriptors":24,"./_object-dp":32,"./_property-desc":33}],30:[function(require,module,exports){
-module.exports = !require('./_descriptors') && !require('./_fails')(function(){
-  return Object.defineProperty(require('./_dom-create')('div'), 'a', {get: function(){ return 7; }}).a != 7;
-});
-},{"./_descriptors":24,"./_dom-create":25,"./_fails":27}],31:[function(require,module,exports){
-module.exports = function(it){
-  return typeof it === 'object' ? it !== null : typeof it === 'function';
-};
-},{}],32:[function(require,module,exports){
-var anObject       = require('./_an-object')
-  , IE8_DOM_DEFINE = require('./_ie8-dom-define')
-  , toPrimitive    = require('./_to-primitive')
-  , dP             = Object.defineProperty;
 
-exports.f = require('./_descriptors') ? Object.defineProperty : function defineProperty(O, P, Attributes){
-  anObject(O);
-  P = toPrimitive(P, true);
-  anObject(Attributes);
-  if(IE8_DOM_DEFINE)try {
-    return dP(O, P, Attributes);
-  } catch(e){ /* empty */ }
-  if('get' in Attributes || 'set' in Attributes)throw TypeError('Accessors not supported!');
-  if('value' in Attributes)O[P] = Attributes.value;
-  return O;
-};
-},{"./_an-object":21,"./_descriptors":24,"./_ie8-dom-define":30,"./_to-primitive":34}],33:[function(require,module,exports){
-module.exports = function(bitmap, value){
-  return {
-    enumerable  : !(bitmap & 1),
-    configurable: !(bitmap & 2),
-    writable    : !(bitmap & 4),
-    value       : value
-  };
-};
-},{}],34:[function(require,module,exports){
-// 7.1.1 ToPrimitive(input [, PreferredType])
-var isObject = require('./_is-object');
-// instead of the ES6 spec version, we didn't implement @@toPrimitive case
-// and the second argument - flag - preferred type is a string
-module.exports = function(it, S){
-  if(!isObject(it))return it;
-  var fn, val;
-  if(S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it)))return val;
-  if(typeof (fn = it.valueOf) == 'function' && !isObject(val = fn.call(it)))return val;
-  if(!S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it)))return val;
-  throw TypeError("Can't convert object to primitive value");
-};
-},{"./_is-object":31}],35:[function(require,module,exports){
-var $export = require('./_export');
-// 19.1.2.4 / 15.2.3.6 Object.defineProperty(O, P, Attributes)
-$export($export.S + $export.F * !require('./_descriptors'), 'Object', {defineProperty: require('./_object-dp').f});
-},{"./_descriptors":24,"./_export":26,"./_object-dp":32}],36:[function(require,module,exports){
+}*/
+
+_vue2.default.use(_vuex2.default);
+
+exports.default = new _vuex2.default.Store({
+    state: {
+        heroes: [],
+        setHeroes: function setHeroes(data) {
+            for (var i = 0; i < data.length; i++) {
+                this.heroes.push(data[i]);
+            }
+        },
+        updateHeroes: function updateHeroes(data) {
+            for (var i = this.heroes.length; i > 0; i--) {
+                this.heroes.pop();
+            }
+            this.setHeroes(data);
+        }
+    }
+
+});
+
+},{"vue":21,"vuex":23}],15:[function(require,module,exports){
+
+},{}],16:[function(require,module,exports){
 // shim for using process in browser
 var process = module.exports = {};
 
@@ -938,7 +883,7 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],37:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 var Vue // late bind
 var version
 var map = window.__VUE_HOT_MAP__ = Object.create(null)
@@ -1076,7 +1021,7 @@ exports.reload = tryWrap(function (id, options) {
   })
 })
 
-},{}],38:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -6971,7 +6916,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 });
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],39:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 /*!
  * vue-resource v1.2.1
  * https://github.com/pagekit/vue-resource
@@ -8501,7 +8446,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 module.exports = plugin;
 
-},{"got":18}],40:[function(require,module,exports){
+},{"got":15}],20:[function(require,module,exports){
 (function (process){
 /**
   * vue-router v2.2.1
@@ -10783,7 +10728,7 @@ if (inBrowser && window.Vue) {
 module.exports = VueRouter;
 
 }).call(this,require('_process'))
-},{"_process":36}],41:[function(require,module,exports){
+},{"_process":16}],21:[function(require,module,exports){
 (function (process,global){
 /*!
  * Vue.js v2.2.4
@@ -17546,7 +17491,7 @@ setTimeout(function () {
 module.exports = Vue$2;
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"_process":36}],42:[function(require,module,exports){
+},{"_process":16}],22:[function(require,module,exports){
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory();
@@ -24870,7 +24815,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 /******/ ]);
 });
 
-},{}],43:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 /**
  * vuex v2.2.1
  * (c) 2017 Evan You
