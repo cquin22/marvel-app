@@ -1,10 +1,12 @@
 <template>
   <v-row>
-    <!--<a href="#" @click="click">click</a>-->
-    <v-col xs12="xs12" sm9>
+    <v-col xs12="xs12" sm9 class="list-heroes">
       <short-by></short-by>
       <div v-if="!isLoad"><v-progress-circular indeterminate class="red--text" /></div>
-      <hero v-if="isLoad" v-for="hero in heros" :data="hero"></hero>
+      <paginate v-if="isLoad" name="heroes" :list="heroes" class="paginate-list" :per="10">
+        <hero  v-for="hero in paginated('heroes')" :data="hero"></hero>
+      </paginate>
+      <paginate-links v-if="isLoad" for="heroes" :limit="5" :show-step-links="true" :step-links="{ next: '>', prev: '<'}"></paginate-links>
     </v-col>
     <v-col xs12="xs12" sm3 class="aside">
       <aside-left></aside-left>
@@ -16,7 +18,7 @@
 import ShortBy from '../short-by/ShortBy.vue';
 import Hero from '../hero/Hero.vue';
 import AsideLeft from '../favourite/Aside.vue';
-import Heros from '../store/HerosStore';
+import Heroes from '../store/HeroesStore';
 import { CONFIG }  from '../../Constants';
 
   /**
@@ -26,9 +28,9 @@ import { CONFIG }  from '../../Constants';
   */
 
   /**
-   * The new instance Heros
+   * The new instance heroes
   */
-  var heros = new Heros();
+  var heroes = new Heroes();
 
   export default {
     /**
@@ -42,7 +44,7 @@ import { CONFIG }  from '../../Constants';
     created() {
         this.$http.get(CONFIG.URL_BASE + '?limit=100&ts=1&apikey=' + CONFIG.API_KEY  + '&hash=' + CONFIG.HASH).then(response => {
             this.isLoad = true;
-            heros.setHeros(response.body.data.results);
+            heroes.setHeroes(response.body.data.results);
         }, response => {
             // error callback
             console.log(response);
@@ -55,7 +57,9 @@ import { CONFIG }  from '../../Constants';
     data () {
       return {
           isLoad: false,
-          heros: heros.state.heros
+          heroes: heroes.state.heroes,
+          items: ['Item One', 'Item Two', 'Item Three', 'Item Four', 'Item Five', 'Item Six', 'Item Seven', 'Item Eight', 'Item Nine', 'Item Ten', 'Item Eleven', 'Item Twelve', 'Item Thirteen'],
+          paginate: ['heroes']
       }
     },
 
@@ -64,7 +68,7 @@ import { CONFIG }  from '../../Constants';
     */
     methods:{
         click: function(){
-            this.heros[2].name = "my Name";
+            this.heroes[2].name = "my Name";
         }
     }
   }

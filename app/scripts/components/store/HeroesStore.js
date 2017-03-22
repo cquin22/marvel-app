@@ -1,16 +1,16 @@
 
 
-export default class HerosStore{
+export default class HeroesStore{
     constructor(){
         this.state = {
-            heros: []
+            heroes: []
         }
     }
 
-    setHeros (data){
+    setHeroes (data){
         console.log(data);
         for (var i = 0; i < data.length; i++) {
-            this.state.heros.push(data[i]);
+            this.state.heroes.push(data[i]);
         }
     }
 
