@@ -1,5 +1,6 @@
 <template>
     <div id="app">
+        <modal></modal>
         <app-header></app-header>
         <div class="container app-content">
             <router-view></router-view>
@@ -10,8 +11,9 @@
 </template>
 
 <script>
-    import AppHeader from './components/common/Header.vue'
-    import AppFooter from './components/common/Footer.vue'
+    import AppHeader from './components/common/Header.vue';
+    import AppFooter from './components/common/Footer.vue';
+    import Modal from './components/modal/Modal.vue';
 
     /**
      * The main component when run application
@@ -21,7 +23,7 @@
 
     export default {
         name: 'app',
-        components: { AppHeader, AppFooter },
+        components: { AppHeader, AppFooter, Modal },
         data () {
             return {
             }

@@ -2,11 +2,11 @@
   <v-row>
     <v-col xs12="xs12" sm9 class="list-heroes">
       <short-by></short-by>
-      <div v-if="!isLoad"><v-progress-circular indeterminate class="red--text" /></div>
-      <paginate v-if="isLoad" name="heroes" :list="heroes" class="paginate-list" :per="10">
+      <div v-if="!$store.state.isLoad"><v-progress-circular indeterminate class="red--text" /></div>
+      <paginate v-if="$store.state.isLoad" name="heroes" :list="heroes" class="paginate-list" :per="10">
         <hero  v-for="hero in paginated('heroes')" :data="hero"></hero>
       </paginate>
-      <paginate-links v-if="isLoad" for="heroes" :limit="5" :show-step-links="true" :step-links="{ next: '>', prev: '<'}"></paginate-links>
+      <paginate-links v-if="$store.state.isLoad" for="heroes" :limit="5" :show-step-links="true" :step-links="{ next: '>', prev: '<'}"></paginate-links>
     </v-col>
     <v-col xs12="xs12" sm3 class="aside">
       <aside-left></aside-left>
@@ -18,8 +18,6 @@
 import ShortBy from './components/short-by/ShortBy.vue';
 import Hero from './components/hero/Hero.vue';
 import AsideLeft from './components/favourite/Aside.vue';
-//import Heroes from '../store/HeroesStore';
-import { CONFIG }  from './Constants';
 
   /**
    * Home component
@@ -42,13 +40,7 @@ import { CONFIG }  from './Constants';
      * Function initial of component
     */
     created() {
-        this.$http.get(CONFIG.URL_BASE + '?limit=100&ts=1&apikey=' + CONFIG.API_KEY  + '&hash=' + CONFIG.HASH).then(response => {
-            this.isLoad = true;
-            this.$store.state.setHeroes(response.body.data.results);
-        }, response => {
-            // error callback
-            console.log(response);
-        });
+        this.$store.state.setHeroes(this.$http);
     },
 
     /**
@@ -56,7 +48,6 @@ import { CONFIG }  from './Constants';
     */
     data () {
       return {
-          isLoad: false,
           heroes: this.$store.state.heroes,
           paginate: ['heroes']
       }

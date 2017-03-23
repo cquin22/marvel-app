@@ -2,7 +2,6 @@ import Vue from 'vue';
 import router from './Router';
 import App from './Main.vue';
 import Vuetify from 'vuetify';
-//import Vuex from 'vuex';
 import VueResource from 'vue-resource';
 import VuePaginate from 'vue-paginate'
 import store from './components/store/HeroesStore.js';

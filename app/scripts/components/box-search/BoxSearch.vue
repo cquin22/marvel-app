@@ -2,7 +2,7 @@
     <div>
         <div class="box-search">
             <i class="icon-magnifier-tool"></i>
-            <input class="search" type="text" v-model="search" />
+            <input class="search" type="text" v-model="search" @blur="searchResult" />
         </div>
     </div>
 </template>
@@ -15,11 +15,10 @@
                 search: ''
             }
         },
-        watch: {
-            search: function(val, oldVal) {
-               /*sdfsdfsd*/
-               this.$store.state.updateHeroes(val);
+        methods: {
+            searchResult: function(){
+                this.$store.state.updateHeroes(this.$http, this.search);
             }
-        }        
+        }     
     }
 </script>
