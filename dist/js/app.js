@@ -21,9 +21,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-21689d5c", __vue__options__)
+    hotAPI.createRecord("data-v-b9c10554", __vue__options__)
   } else {
-    hotAPI.reload("data-v-21689d5c", __vue__options__)
+    hotAPI.reload("data-v-b9c10554", __vue__options__)
   }
 })()}
 },{"vue":21,"vue-hot-reload-api":17}],2:[function(require,module,exports){
@@ -82,7 +82,7 @@ new _vue2.default({
     }
 }).$mount('#app');
 
-},{"./Main.vue":4,"./Router":5,"./components/store/HeroesStore.js":14,"vue":21,"vue-paginate":18,"vue-resource":19,"vuetify":22}],3:[function(require,module,exports){
+},{"./Main.vue":5,"./Router":6,"./components/store/HeroesStore.js":14,"vue":21,"vue-paginate":18,"vue-resource":19,"vuetify":22}],3:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -101,6 +101,73 @@ var CONFIG = exports.CONFIG = {
 };
 
 },{}],4:[function(require,module,exports){
+;(function(){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _ShortBy = require('./components/short-by/ShortBy.vue');
+
+var _ShortBy2 = _interopRequireDefault(_ShortBy);
+
+var _Hero = require('./components/hero/Hero.vue');
+
+var _Hero2 = _interopRequireDefault(_Hero);
+
+var _Aside = require('./components/favourite/Aside.vue');
+
+var _Aside2 = _interopRequireDefault(_Aside);
+
+var _Constants = require('./Constants');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+    components: { ShortBy: _ShortBy2.default, Hero: _Hero2.default, AsideLeft: _Aside2.default },
+
+    created: function created() {
+        var _this = this;
+
+        this.$http.get(_Constants.CONFIG.URL_BASE + '?limit=100&ts=1&apikey=' + _Constants.CONFIG.API_KEY + '&hash=' + _Constants.CONFIG.HASH).then(function (response) {
+            _this.isLoad = true;
+            _this.$store.state.setHeroes(response.body.data.results);
+        }, function (response) {
+            console.log(response);
+        });
+    },
+    data: function data() {
+        return {
+            isLoad: false,
+            heroes: this.$store.state.heroes,
+            paginate: ['heroes']
+        };
+    },
+
+    methods: {
+        click: function click() {
+            this.heroes[2].name = "my Name";
+        }
+    }
+};
+})()
+if (module.exports.__esModule) module.exports = module.exports.default
+var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
+if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-row',[_c('v-col',{staticClass:"list-heroes",attrs:{"xs12":"xs12","sm9":""}},[_c('short-by'),_vm._v(" "),(!_vm.isLoad)?_c('div',[_c('v-progress-circular',{staticClass:"red--text",attrs:{"indeterminate":""}})],1):_vm._e(),_vm._v(" "),(_vm.isLoad)?_c('paginate',{staticClass:"paginate-list",attrs:{"name":"heroes","list":_vm.heroes,"per":10}},_vm._l((_vm.paginated('heroes')),function(hero){return _c('hero',{attrs:{"data":hero}})})):_vm._e(),_vm._v(" "),(_vm.isLoad)?_c('paginate-links',{attrs:{"for":"heroes","limit":5,"show-step-links":true,"step-links":{ next: '>', prev: '<'}}}):_vm._e()],1),_vm._v(" "),_c('v-col',{staticClass:"aside",attrs:{"xs12":"xs12","sm3":""}},[_c('aside-left')],1)],1)}
+__vue__options__.staticRenderFns = []
+if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), true)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-0a3b7e80", __vue__options__)
+  } else {
+    hotAPI.reload("data-v-0a3b7e80", __vue__options__)
+  }
+})()}
+},{"./Constants":3,"./components/favourite/Aside.vue":10,"./components/hero/Hero.vue":12,"./components/short-by/ShortBy.vue":13,"vue":21,"vue-hot-reload-api":17}],5:[function(require,module,exports){
 ;(function(){
 'use strict';
 
@@ -136,12 +203,12 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-a2e06836", __vue__options__)
+    hotAPI.createRecord("data-v-63b4eb2b", __vue__options__)
   } else {
-    hotAPI.reload("data-v-a2e06836", __vue__options__)
+    hotAPI.reload("data-v-63b4eb2b", __vue__options__)
   }
 })()}
-},{"./components/common/Footer.vue":7,"./components/common/Header.vue":8,"vue":21,"vue-hot-reload-api":17}],5:[function(require,module,exports){
+},{"./components/common/Footer.vue":8,"./components/common/Header.vue":9,"vue":21,"vue-hot-reload-api":17}],6:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -156,7 +223,7 @@ var _vueRouter = require('vue-router');
 
 var _vueRouter2 = _interopRequireDefault(_vueRouter);
 
-var _HomeApp = require('./components/common/HomeApp.vue');
+var _HomeApp = require('./HomeApp.vue');
 
 var _HomeApp2 = _interopRequireDefault(_HomeApp);
 
@@ -189,182 +256,25 @@ var router = new _vueRouter2.default({
 
 exports.default = router;
 
-},{"./404.vue":1,"./components/common/HomeApp.vue":9,"vue":21,"vue-router":20}],6:[function(require,module,exports){
+},{"./404.vue":1,"./HomeApp.vue":4,"vue":21,"vue-router":20}],7:[function(require,module,exports){
 ;(function(){
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 exports.default = {
-  data: function data() {
-    return {
-      search: ''
-    };
-  },
+    data: function data() {
+        return {
+            search: ''
+        };
+    },
 
-  watch: {
-    search: function search(val, oldVal) {
-      var obj = [{
-        "id": 1011334,
-        "name": "3-D Man",
-        "description": "",
-        "modified": "2014-04-29T14:18:17-0400",
-        "thumbnail": {
-          "path": "http://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784",
-          "extension": "jpg"
-        },
-        "resourceURI": "http://gateway.marvel.com/v1/public/characters/1011334",
-        "comics": {
-          "available": 11,
-          "collectionURI": "http://gateway.marvel.com/v1/public/characters/1011334/comics",
-          "items": [{
-            "resourceURI": "http://gateway.marvel.com/v1/public/comics/21366",
-            "name": "Avengers: The Initiative (2007) #14"
-          }, {
-            "resourceURI": "http://gateway.marvel.com/v1/public/comics/24571",
-            "name": "Avengers: The Initiative (2007) #14 (SPOTLIGHT VARIANT)"
-          }, {
-            "resourceURI": "http://gateway.marvel.com/v1/public/comics/21546",
-            "name": "Avengers: The Initiative (2007) #15"
-          }, {
-            "resourceURI": "http://gateway.marvel.com/v1/public/comics/21741",
-            "name": "Avengers: The Initiative (2007) #16"
-          }, {
-            "resourceURI": "http://gateway.marvel.com/v1/public/comics/21975",
-            "name": "Avengers: The Initiative (2007) #17"
-          }, {
-            "resourceURI": "http://gateway.marvel.com/v1/public/comics/22299",
-            "name": "Avengers: The Initiative (2007) #18"
-          }, {
-            "resourceURI": "http://gateway.marvel.com/v1/public/comics/22300",
-            "name": "Avengers: The Initiative (2007) #18 (ZOMBIE VARIANT)"
-          }, {
-            "resourceURI": "http://gateway.marvel.com/v1/public/comics/22506",
-            "name": "Avengers: The Initiative (2007) #19"
-          }, {
-            "resourceURI": "http://gateway.marvel.com/v1/public/comics/10223",
-            "name": "Marvel Premiere (1972) #35"
-          }, {
-            "resourceURI": "http://gateway.marvel.com/v1/public/comics/10224",
-            "name": "Marvel Premiere (1972) #36"
-          }, {
-            "resourceURI": "http://gateway.marvel.com/v1/public/comics/10225",
-            "name": "Marvel Premiere (1972) #37"
-          }],
-          "returned": 11
-        },
-        "series": {
-          "available": 2,
-          "collectionURI": "http://gateway.marvel.com/v1/public/characters/1011334/series",
-          "items": [{
-            "resourceURI": "http://gateway.marvel.com/v1/public/series/1945",
-            "name": "Avengers: The Initiative (2007 - 2010)"
-          }, {
-            "resourceURI": "http://gateway.marvel.com/v1/public/series/2045",
-            "name": "Marvel Premiere (1972 - 1981)"
-          }],
-          "returned": 2
-        },
-        "stories": {
-          "available": 17,
-          "collectionURI": "http://gateway.marvel.com/v1/public/characters/1011334/stories",
-          "items": [{
-            "resourceURI": "http://gateway.marvel.com/v1/public/stories/19947",
-            "name": "Cover #19947",
-            "type": "cover"
-          }, {
-            "resourceURI": "http://gateway.marvel.com/v1/public/stories/19948",
-            "name": "The 3-D Man!",
-            "type": "interiorStory"
-          }, {
-            "resourceURI": "http://gateway.marvel.com/v1/public/stories/19949",
-            "name": "Cover #19949",
-            "type": "cover"
-          }, {
-            "resourceURI": "http://gateway.marvel.com/v1/public/stories/19950",
-            "name": "The Devil's Music!",
-            "type": "interiorStory"
-          }, {
-            "resourceURI": "http://gateway.marvel.com/v1/public/stories/19951",
-            "name": "Cover #19951",
-            "type": "cover"
-          }, {
-            "resourceURI": "http://gateway.marvel.com/v1/public/stories/19952",
-            "name": "Code-Name:  The Cold Warrior!",
-            "type": "interiorStory"
-          }, {
-            "resourceURI": "http://gateway.marvel.com/v1/public/stories/47185",
-            "name": "Avengers: The Initiative (2007) #14 - Int",
-            "type": "interiorStory"
-          }, {
-            "resourceURI": "http://gateway.marvel.com/v1/public/stories/47499",
-            "name": "Avengers: The Initiative (2007) #15 - Int",
-            "type": "interiorStory"
-          }, {
-            "resourceURI": "http://gateway.marvel.com/v1/public/stories/47792",
-            "name": "Avengers: The Initiative (2007) #16",
-            "type": "cover"
-          }, {
-            "resourceURI": "http://gateway.marvel.com/v1/public/stories/47793",
-            "name": "Avengers: The Initiative (2007) #16 - Int",
-            "type": "interiorStory"
-          }, {
-            "resourceURI": "http://gateway.marvel.com/v1/public/stories/48362",
-            "name": "Avengers: The Initiative (2007) #17 - Int",
-            "type": "interiorStory"
-          }, {
-            "resourceURI": "http://gateway.marvel.com/v1/public/stories/49104",
-            "name": "Avengers: The Initiative (2007) #18 - Int",
-            "type": "interiorStory"
-          }, {
-            "resourceURI": "http://gateway.marvel.com/v1/public/stories/49106",
-            "name": "Avengers: The Initiative (2007) #18, Zombie Variant - Int",
-            "type": "interiorStory"
-          }, {
-            "resourceURI": "http://gateway.marvel.com/v1/public/stories/49888",
-            "name": "Avengers: The Initiative (2007) #19",
-            "type": "cover"
-          }, {
-            "resourceURI": "http://gateway.marvel.com/v1/public/stories/49889",
-            "name": "Avengers: The Initiative (2007) #19 - Int",
-            "type": "interiorStory"
-          }, {
-            "resourceURI": "http://gateway.marvel.com/v1/public/stories/54371",
-            "name": "Avengers: The Initiative (2007) #14, Spotlight Variant - Int",
-            "type": "interiorStory"
-          }, {
-            "resourceURI": "http://gateway.marvel.com/v1/public/stories/96303",
-            "name": "Deadpool (1997) #44",
-            "type": "interiorStory"
-          }],
-          "returned": 17
-        },
-        "events": {
-          "available": 1,
-          "collectionURI": "http://gateway.marvel.com/v1/public/characters/1011334/events",
-          "items": [{
-            "resourceURI": "http://gateway.marvel.com/v1/public/events/269",
-            "name": "Secret Invasion"
-          }],
-          "returned": 1
-        },
-        "urls": [{
-          "type": "detail",
-          "url": "http://marvel.com/characters/74/3-d_man?utm_campaign=apiRef&utm_source=62ed700024d09af2b0eda474e3a72df2"
-        }, {
-          "type": "wiki",
-          "url": "http://marvel.com/universe/3-D_Man_(Chandler)?utm_campaign=apiRef&utm_source=62ed700024d09af2b0eda474e3a72df2"
-        }, {
-          "type": "comiclink",
-          "url": "http://marvel.com/comics/characters/1011334/3-d_man?utm_campaign=apiRef&utm_source=62ed700024d09af2b0eda474e3a72df2"
-        }]
-      }];
-
-
-      this.$store.state.updateHeroes(obj);
+    watch: {
+        search: function search(val, oldVal) {
+            this.$store.state.updateHeroes(val);
+        }
     }
-  }
 };
 })()
 if (module.exports.__esModule) module.exports = module.exports.default
@@ -377,12 +287,12 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3a0f6d2a", __vue__options__)
+    hotAPI.createRecord("data-v-47bfce65", __vue__options__)
   } else {
-    hotAPI.reload("data-v-3a0f6d2a", __vue__options__)
+    hotAPI.reload("data-v-47bfce65", __vue__options__)
   }
 })()}
-},{"vue":21,"vue-hot-reload-api":17}],7:[function(require,module,exports){
+},{"vue":21,"vue-hot-reload-api":17}],8:[function(require,module,exports){
 ;(function(){
 "use strict";
 
@@ -405,12 +315,12 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-6a726012", __vue__options__)
+    hotAPI.createRecord("data-v-12a52058", __vue__options__)
   } else {
-    hotAPI.reload("data-v-6a726012", __vue__options__)
+    hotAPI.reload("data-v-12a52058", __vue__options__)
   }
 })()}
-},{"vue":21,"vue-hot-reload-api":17}],8:[function(require,module,exports){
+},{"vue":21,"vue-hot-reload-api":17}],9:[function(require,module,exports){
 ;(function(){
 'use strict';
 
@@ -442,79 +352,12 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-e8b677f8", __vue__options__)
+    hotAPI.createRecord("data-v-33d7844a", __vue__options__)
   } else {
-    hotAPI.reload("data-v-e8b677f8", __vue__options__)
+    hotAPI.reload("data-v-33d7844a", __vue__options__)
   }
 })()}
-},{"../box-search/BoxSearch.vue":6,"vue":21,"vue-hot-reload-api":17}],9:[function(require,module,exports){
-;(function(){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _ShortBy = require('../short-by/ShortBy.vue');
-
-var _ShortBy2 = _interopRequireDefault(_ShortBy);
-
-var _Hero = require('../hero/Hero.vue');
-
-var _Hero2 = _interopRequireDefault(_Hero);
-
-var _Aside = require('../favourite/Aside.vue');
-
-var _Aside2 = _interopRequireDefault(_Aside);
-
-var _Constants = require('../../Constants');
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = {
-    components: { ShortBy: _ShortBy2.default, Hero: _Hero2.default, AsideLeft: _Aside2.default },
-
-    created: function created() {
-        var _this = this;
-
-        this.$http.get(_Constants.CONFIG.URL_BASE + '?limit=5&ts=1&apikey=' + _Constants.CONFIG.API_KEY + '&hash=' + _Constants.CONFIG.HASH).then(function (response) {
-            _this.isLoad = true;
-            _this.$store.state.setHeroes(response.body.data.results);
-        }, function (response) {
-            console.log(response);
-        });
-    },
-    data: function data() {
-        return {
-            isLoad: false,
-            heroes: this.$store.state.heroes,
-            paginate: ['heroes']
-        };
-    },
-
-    methods: {
-        click: function click() {
-            this.heroes[2].name = "my Name";
-        }
-    }
-};
-})()
-if (module.exports.__esModule) module.exports = module.exports.default
-var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
-if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('v-row',[_c('v-col',{staticClass:"list-heroes",attrs:{"xs12":"xs12","sm9":""}},[_c('short-by'),_vm._v(" "),(!_vm.isLoad)?_c('div',[_c('v-progress-circular',{staticClass:"red--text",attrs:{"indeterminate":""}})],1):_vm._e(),_vm._v(" "),(_vm.isLoad)?_c('paginate',{staticClass:"paginate-list",attrs:{"name":"heroes","list":_vm.heroes,"per":10}},_vm._l((_vm.paginated('heroes')),function(hero){return _c('hero',{attrs:{"data":hero}})})):_vm._e(),_vm._v(" "),(_vm.isLoad)?_c('paginate-links',{attrs:{"for":"heroes","limit":5,"show-step-links":true,"step-links":{ next: '>', prev: '<'}}}):_vm._e()],1),_vm._v(" "),_c('v-col',{staticClass:"aside",attrs:{"xs12":"xs12","sm3":""}},[_c('aside-left')],1)],1)}
-__vue__options__.staticRenderFns = []
-if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), true)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-5e9fdcdb", __vue__options__)
-  } else {
-    hotAPI.reload("data-v-5e9fdcdb", __vue__options__)
-  }
-})()}
-},{"../../Constants":3,"../favourite/Aside.vue":10,"../hero/Hero.vue":12,"../short-by/ShortBy.vue":13,"vue":21,"vue-hot-reload-api":17}],10:[function(require,module,exports){
+},{"../box-search/BoxSearch.vue":7,"vue":21,"vue-hot-reload-api":17}],10:[function(require,module,exports){
 ;(function(){
 'use strict';
 
@@ -545,9 +388,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-a816a12a", __vue__options__)
+    hotAPI.createRecord("data-v-12787631", __vue__options__)
   } else {
-    hotAPI.reload("data-v-a816a12a", __vue__options__)
+    hotAPI.reload("data-v-12787631", __vue__options__)
   }
 })()}
 },{"./Favorite.vue":11,"vue":21,"vue-hot-reload-api":17}],11:[function(require,module,exports){
@@ -573,9 +416,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-d1155e8e", __vue__options__)
+    hotAPI.createRecord("data-v-586dcc33", __vue__options__)
   } else {
-    hotAPI.reload("data-v-d1155e8e", __vue__options__)
+    hotAPI.reload("data-v-586dcc33", __vue__options__)
   }
 })()}
 },{"vue":21,"vue-hot-reload-api":17}],12:[function(require,module,exports){
@@ -610,9 +453,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-74296d02", __vue__options__)
+    hotAPI.createRecord("data-v-40b97f70", __vue__options__)
   } else {
-    hotAPI.reload("data-v-74296d02", __vue__options__)
+    hotAPI.reload("data-v-40b97f70", __vue__options__)
   }
 })()}
 },{"vue":21,"vue-hot-reload-api":17}],13:[function(require,module,exports){
@@ -640,9 +483,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4bb592e9", __vue__options__)
+    hotAPI.createRecord("data-v-94aab63a", __vue__options__)
   } else {
-    hotAPI.reload("data-v-4bb592e9", __vue__options__)
+    hotAPI.reload("data-v-94aab63a", __vue__options__)
   }
 })()}
 },{"vue":21,"vue-hot-reload-api":17}],14:[function(require,module,exports){
@@ -662,38 +505,26 @@ var _vuex2 = _interopRequireDefault(_vuex);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/*
-export default class HeroesStore{
-    constructor(){
-        this.state = {
-            heroes: []
-        }
-    }
-
-    setHeroes (data){
-        console.log(data);
-        for (var i = 0; i < data.length; i++) {
-            this.state.heroes.push(data[i]);
-        }
-    }
-
-}*/
-
 _vue2.default.use(_vuex2.default);
 
 exports.default = new _vuex2.default.Store({
     state: {
         heroes: [],
         setHeroes: function setHeroes(data) {
+            for (var i = this.heroes.length; i > 0; i--) {
+                this.heroes.pop();
+            }
             for (var i = 0; i < data.length; i++) {
                 this.heroes.push(data[i]);
             }
         },
         updateHeroes: function updateHeroes(data) {
-            for (var i = this.heroes.length; i > 0; i--) {
-                this.heroes.pop();
-            }
-            this.setHeroes(data);
+            var filter = this.heroes.filter(function (item) {
+                if (item.name.toLowerCase().indexOf(data) !== -1) {
+                    return item;
+                }
+            });
+            this.setHeroes(filter);
         }
     }
 

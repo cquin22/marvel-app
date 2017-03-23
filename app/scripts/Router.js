@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from './components/common/HomeApp.vue';
+import Home from './HomeApp.vue';
 import Error from './404.vue';
 Vue.use(VueRouter);
 

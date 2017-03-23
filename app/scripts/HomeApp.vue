@@ -15,11 +15,11 @@
 </template>
 
 <script>
-import ShortBy from '../short-by/ShortBy.vue';
-import Hero from '../hero/Hero.vue';
-import AsideLeft from '../favourite/Aside.vue';
+import ShortBy from './components/short-by/ShortBy.vue';
+import Hero from './components/hero/Hero.vue';
+import AsideLeft from './components/favourite/Aside.vue';
 //import Heroes from '../store/HeroesStore';
-import { CONFIG }  from '../../Constants';
+import { CONFIG }  from './Constants';
 
   /**
    * Home component
@@ -42,7 +42,7 @@ import { CONFIG }  from '../../Constants';
      * Function initial of component
     */
     created() {
-        this.$http.get(CONFIG.URL_BASE + '?limit=5&ts=1&apikey=' + CONFIG.API_KEY  + '&hash=' + CONFIG.HASH).then(response => {
+        this.$http.get(CONFIG.URL_BASE + '?limit=100&ts=1&apikey=' + CONFIG.API_KEY  + '&hash=' + CONFIG.HASH).then(response => {
             this.isLoad = true;
             this.$store.state.setHeroes(response.body.data.results);
         }, response => {
