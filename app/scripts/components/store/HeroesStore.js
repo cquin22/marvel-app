@@ -13,6 +13,7 @@ export default new Vuex.Store({
     state: {
         heroes: [],
         isLoad: false,
+        comicsByHero: [],
         addHeroes (data){
             for (var i = this.heroes.length; i > 0; i--) {
                 this.heroes.pop();
@@ -52,6 +53,15 @@ export default new Vuex.Store({
             }else if(sorageHeroes){
                 this.addHeroes(JSON.parse(sorageHeroes));
             }
+        },
+
+        getComicsByHero (http, id){
+                http.get(CONFIG.URL_BASE + '/'+id+'/comics?format=comic&formatType=comic&ts=1&apikey=' + CONFIG.API_KEY  + '&hash=' + CONFIG.HASH).then(response => {
+                    this.comicsByHero.push(response.body.data.results[0]);
+                }, response => {
+                    // error callback
+                    console.log(response);
+                });
         }       
     }
 

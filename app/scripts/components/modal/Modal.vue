@@ -1,6 +1,6 @@
 <template>
     <div>
-        modal
+        {{comicsByHero}}
     </div>
 </template>
 
@@ -9,6 +9,7 @@
     export default {
         data () {
             return {
+                comicsByHero: this.$store.state.comicsByHero
             }
         }   
     }

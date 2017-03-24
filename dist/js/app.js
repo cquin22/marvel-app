@@ -432,13 +432,19 @@ exports.default = {
                 });
             }
         };
+    },
+
+    computed: {
+        openComicsHero: function openComicsHero(info) {
+            this.$store.state.getComicsByHero(this.$http, info.data.id);
+        }
     }
 };
 })()
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"hero"},[_c('v-row',[_c('v-col',{attrs:{"xs12":"","sm6":""}},[_c('div',{staticClass:"avatar-box"},[_c('img',{staticClass:"avatar-hero",attrs:{"src":this.data.thumbnail.path + '.' + this.data.thumbnail.extension}})])]),_vm._v(" "),_c('v-col',{attrs:{"xs12":"","sm6":""}},[_c('div',{staticClass:"primary-info"},[_c('h3',[_vm._v(_vm._s(this.data.name))]),_vm._v(" "),(this.data.description)?_c('p',[_vm._v(_vm._s(this.data.description))]):_c('p',[_vm._v("This character does not have an official description of marvel we invite you to consult the information again in a few days ...")]),_vm._v(" "),_c('a',{staticClass:"btn--light-flat-focused btn btn--large btn--raised marvel-btn",attrs:{"href":"#"}},[_c('span',[_vm._v("View More")])])])])],1),_vm._v(" "),_c('v-row',{staticClass:"additional-info"},[_c('h4',[_vm._v("Related comics")]),_vm._v(" "),(this.data.comics.items.length == 0)?_c('p',[_vm._v("This character still has no related comics, we invite you to watch for the new news")]):_vm._e(),_vm._v(" "),_c('ul',_vm._l((_vm.relatedFilter(this.data.comics.items)),function(comic){return _c('li',[_c('p',[_vm._v(" "+_vm._s(comic.name))])])}))])],1)}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"hero"},[_c('v-row',[_c('v-col',{attrs:{"xs12":"","sm6":""}},[_c('div',{staticClass:"avatar-box"},[_c('img',{staticClass:"avatar-hero",attrs:{"src":this.data.thumbnail.path + '.' + this.data.thumbnail.extension}})])]),_vm._v(" "),_c('v-col',{attrs:{"xs12":"","sm6":""}},[_c('div',{staticClass:"primary-info"},[_c('h3',[_vm._v(_vm._s(this.data.name))]),_vm._v(" "),(this.data.description)?_c('p',[_vm._v(_vm._s(this.data.description))]):_c('p',[_vm._v("This character does not have an official description of marvel we invite you to consult the information again in a few days ...")]),_vm._v(" "),_c('a',{staticClass:"btn--light-flat-focused btn btn--large btn--raised marvel-btn",attrs:{"href":"#"},on:{"click":function($event){_vm.openComicsHero(this.data.name)}}},[_c('span',[_vm._v("View More")])])])])],1),_vm._v(" "),_c('v-row',{staticClass:"additional-info"},[_c('h4',[_vm._v("Related comics")]),_vm._v(" "),(this.data.comics.items.length == 0)?_c('p',[_vm._v("This character still has no related comics, we invite you to watch for the new news")]):_vm._e(),_vm._v(" "),_c('ul',_vm._l((_vm.relatedFilter(this.data.comics.items)),function(comic){return _c('li',[_c('p',[_vm._v(" "+_vm._s(comic.name))])])}))])],1)}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -459,14 +465,16 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = {
     data: function data() {
-        return {};
+        return {
+            comicsByHero: this.$store.state.comicsByHero
+        };
     }
 };
 })()
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_vm._v("\n    modal\n")])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_vm._v("\n    "+_vm._s(_vm.comicsByHero)+"\n")])}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
@@ -545,6 +553,7 @@ exports.default = new _vuex2.default.Store({
     state: {
         heroes: [],
         isLoad: false,
+        comicsByHero: [],
         addHeroes: function addHeroes(data) {
             for (var i = this.heroes.length; i > 0; i--) {
                 this.heroes.pop();
@@ -587,6 +596,16 @@ exports.default = new _vuex2.default.Store({
             } else if (sorageHeroes) {
                 this.addHeroes(JSON.parse(sorageHeroes));
             }
+        },
+        getComicsByHero: function getComicsByHero(http, id) {
+            var _this3 = this;
+
+            http.get(_Constants.CONFIG.URL_BASE + '/' + id + '/comics?format=comic&formatType=comic&ts=1&apikey=' + _Constants.CONFIG.API_KEY + '&hash=' + _Constants.CONFIG.HASH).then(function (response) {
+                _this3.comicsByHero.push(response.body.data.results[0]);
+            }, function (response) {
+                // error callback
+                console.log(response);
+            });
         }
     }
 
