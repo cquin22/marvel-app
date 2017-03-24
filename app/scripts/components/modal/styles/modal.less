@@ -1,0 +1,86 @@
+.bg-modal {
+  position: fixed;
+  background: rgba(2,2,2, 0.7);
+  background-image: url("../img/pattern.png");
+  width: 100%;
+  height: 100%;
+  z-index: 9999999999999;
+  .content-modal{
+    width: 700px;
+    height: 470px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: white;
+    margin-left: -350px;
+    margin-top: -280px;
+    .top{
+      padding: 25px;
+      .image-comic{
+        text-align: center;
+        img{
+          max-width: 210px;
+          width: 100%;
+        }
+      }
+      .comic-info{
+        position: relative;
+        h3{
+          font-size: 20px;
+        }
+        .cancel{
+          position: absolute;
+          right: 0;
+          top: -12px;
+          font-size: 22px;
+          .app-transition(all, 0.5s, ease-in-out );
+          &:hover{
+            cursor: pointer;
+            color: @marvel_color;
+          }
+        }
+        .box-info{
+          height: 300px;
+          overflow-y: scroll;
+          p{
+            font-size: 13px;
+          }
+        }
+
+      }
+    }
+    .bottom{
+      display: flex;
+      display: -webkit-flex;
+    }
+
+  }
+}
+
+.btn-modal{
+  width: 50%;
+  vertical-align: bottom;
+  text-align: center;
+  height: 72px;
+  padding-top: 16px;
+  .app-transition(all, 0.5s, ease-in-out );
+  &.gray{
+    background-color: #ccc;
+  }
+  &:hover{
+    cursor: pointer;
+    background-color: @secoundary_color;
+    p{
+      color: white;
+    }
+  }
+  .btn-modal, p{
+    display: inline-block;
+    vertical-align: middle;
+  }
+  p{
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+  }
+}

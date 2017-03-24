@@ -8,7 +8,9 @@
             </div>
             <h3>My favourites</h3>
         </div>
-        <favourite></favourite>
+        <div v-if="favourites.length > 0">
+            <favourite v-for="favorite in favourites" :data="favorite"></favourite>
+        </div>
     </div>
 </template>
 
@@ -18,6 +20,7 @@
         components: { Favourite },
         data () {
             return {
+                favourites: this.$store.state.myFavorites
             }
         },
     }

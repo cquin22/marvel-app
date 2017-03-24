@@ -14,6 +14,7 @@ export default new Vuex.Store({
         heroes: [],
         isLoad: false,
         comicsByHero: [],
+        myFavorites: [],
         addHeroes (data){
             for (var i = this.heroes.length; i > 0; i--) {
                 this.heroes.pop();
@@ -57,6 +58,7 @@ export default new Vuex.Store({
 
         getComicsByHero (http, id){
                 http.get(CONFIG.URL_BASE + '/'+id+'/comics?format=comic&formatType=comic&ts=1&apikey=' + CONFIG.API_KEY  + '&hash=' + CONFIG.HASH).then(response => {
+                    this.isLoad = true;
                     this.comicsByHero.push(response.body.data.results[0]);
                 }, response => {
                     // error callback

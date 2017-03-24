@@ -12,7 +12,7 @@
                     <p v-if="this.data.description">{{this.data.description}}</p>
                     <p v-else>This character does not have an official description of marvel we invite you to consult the information again in a few days ...</p>
                     <a href="#" @click="openComicsHero(this.data.name)" class="btn--light-flat-focused btn btn--large btn--raised marvel-btn">
-                        <span>View More</span>
+                        <span>View More </span>
                     </a>
                 </div>
             </v-col>
@@ -44,6 +44,7 @@
         },
         computed : {
             openComicsHero: function(info){
+                this.$store.state.isLoad = false;
                 this.$store.state.getComicsByHero(this.$http, info.data.id);
             }
         }

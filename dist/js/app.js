@@ -21,9 +21,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-21689d5c", __vue__options__)
+    hotAPI.createRecord("data-v-b9c10554", __vue__options__)
   } else {
-    hotAPI.reload("data-v-21689d5c", __vue__options__)
+    hotAPI.reload("data-v-b9c10554", __vue__options__)
   }
 })()}
 },{"vue":25,"vue-hot-reload-api":21}],2:[function(require,module,exports){
@@ -103,7 +103,7 @@ var CONFIG = exports.CONFIG = {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 
 var _ShortBy = require('./components/short-by/ShortBy.vue');
@@ -121,23 +121,23 @@ var _Aside2 = _interopRequireDefault(_Aside);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {
-  components: { ShortBy: _ShortBy2.default, Hero: _Hero2.default, AsideLeft: _Aside2.default },
+    components: { ShortBy: _ShortBy2.default, Hero: _Hero2.default, AsideLeft: _Aside2.default },
 
-  created: function created() {
-    this.$store.state.setHeroes(this.$http);
-  },
-  data: function data() {
-    return {
-      heroes: this.$store.state.heroes,
-      paginate: ['heroes']
-    };
-  },
+    created: function created() {
+        this.$store.state.setHeroes(this.$http);
+    },
+    data: function data() {
+        return {
+            heroes: this.$store.state.heroes,
+            paginate: ['heroes']
+        };
+    },
 
-  methods: {
-    click: function click() {
-      this.heroes[2].name = "my Name";
+    methods: {
+        click: function click() {
+            this.heroes[2].name = "my Name";
+        }
     }
-  }
 };
 })()
 if (module.exports.__esModule) module.exports = module.exports.default
@@ -150,9 +150,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-20202474", __vue__options__)
+    hotAPI.createRecord("data-v-0a3b7e80", __vue__options__)
   } else {
-    hotAPI.reload("data-v-20202474", __vue__options__)
+    hotAPI.reload("data-v-0a3b7e80", __vue__options__)
   }
 })()}
 },{"./components/favourite/Aside.vue":10,"./components/hero/Hero.vue":12,"./components/short-by/ShortBy.vue":14,"vue":25,"vue-hot-reload-api":21}],5:[function(require,module,exports){
@@ -195,9 +195,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-a2e06836", __vue__options__)
+    hotAPI.createRecord("data-v-63b4eb2b", __vue__options__)
   } else {
-    hotAPI.reload("data-v-a2e06836", __vue__options__)
+    hotAPI.reload("data-v-63b4eb2b", __vue__options__)
   }
 })()}
 },{"./components/common/Footer.vue":8,"./components/common/Header.vue":9,"./components/modal/Modal.vue":13,"vue":25,"vue-hot-reload-api":21}],6:[function(require,module,exports){
@@ -279,9 +279,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3a0f6d2a", __vue__options__)
+    hotAPI.createRecord("data-v-47bfce65", __vue__options__)
   } else {
-    hotAPI.reload("data-v-3a0f6d2a", __vue__options__)
+    hotAPI.reload("data-v-47bfce65", __vue__options__)
   }
 })()}
 },{"vue":25,"vue-hot-reload-api":21}],8:[function(require,module,exports){
@@ -307,9 +307,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-6a726012", __vue__options__)
+    hotAPI.createRecord("data-v-12a52058", __vue__options__)
   } else {
-    hotAPI.reload("data-v-6a726012", __vue__options__)
+    hotAPI.reload("data-v-12a52058", __vue__options__)
   }
 })()}
 },{"vue":25,"vue-hot-reload-api":21}],9:[function(require,module,exports){
@@ -337,16 +337,16 @@ exports.default = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"header"},[_c('v-container',[_c('v-row',[_c('v-col',{attrs:{"xs12":"xs12"}},[_c('v-row',[_c('v-col',{attrs:{"xs12":"xs12","sm3":"sm3"}}),_vm._v(" "),_c('v-col',{attrs:{"xs12":"xs12","sm6":"sm6"}},[_c('box-search')],1)],1)],1)],1)],1)],1)}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"header"},[_c('v-container',[_c('v-row',[_c('v-col',{attrs:{"xs12":"xs12"}},[_c('v-row',[_c('v-col',{attrs:{"xs12":"xs12","sm3":"sm3"}},[_c('img',{staticClass:"logo",attrs:{"src":"./img/logo.png"}})]),_vm._v(" "),_c('v-col',{attrs:{"xs12":"xs12","sm6":"sm6"}},[_c('box-search')],1)],1)],1)],1)],1)],1)}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-e8b677f8", __vue__options__)
+    hotAPI.createRecord("data-v-33d7844a", __vue__options__)
   } else {
-    hotAPI.reload("data-v-e8b677f8", __vue__options__)
+    hotAPI.reload("data-v-33d7844a", __vue__options__)
   }
 })()}
 },{"../box-search/BoxSearch.vue":7,"vue":25,"vue-hot-reload-api":21}],10:[function(require,module,exports){
@@ -366,33 +366,36 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.default = {
     components: { Favourite: _Favorite2.default },
     data: function data() {
-        return {};
+        return {
+            favourites: this.$store.state.myFavorites
+        };
     }
 };
 })()
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_vm._m(0),_vm._v(" "),_c('favourite')],1)}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_vm._m(0),_vm._v(" "),(_vm.favourites.length > 0)?_c('div',_vm._l((_vm.favourites),function(favorite){return _c('favourite',{attrs:{"data":favorite}})})):_vm._e()])}
 __vue__options__.staticRenderFns = [function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"box-title-aside"},[_c('div',{staticClass:"layer-cap-1 red"},[_c('div',{staticClass:"layer-cap-2"},[_c('span',{staticClass:"icon-star-in-black-of-five-points-shape"})])]),_vm._v(" "),_c('h3',[_vm._v("My favourites")])])}]
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-a816a12a", __vue__options__)
+    hotAPI.createRecord("data-v-12787631", __vue__options__)
   } else {
-    hotAPI.reload("data-v-a816a12a", __vue__options__)
+    hotAPI.reload("data-v-12787631", __vue__options__)
   }
 })()}
 },{"./Favorite.vue":11,"vue":25,"vue-hot-reload-api":21}],11:[function(require,module,exports){
 ;(function(){
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
 exports.default = {
+    props: ['data'],
     data: function data() {
         return {};
     }
@@ -401,16 +404,16 @@ exports.default = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _vm._m(0)}
-__vue__options__.staticRenderFns = [function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"box-favourite"},[_c('div',{staticClass:"box-ico-trash"},[_c('i',{staticClass:"icon-garbage"})]),_vm._v(" "),_c('img',{staticClass:"image-comic",attrs:{"src":"http://vignette3.wikia.nocookie.net/marveldatabase/images/0/04/Amazing_Spider-Man_Vol_1_562.jpg/revision/latest?cb=20080629193023"}}),_vm._v(" "),_c('p',[_vm._v("Comic title mauris non tempor quam, etc lacina")])])}]
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"box-favourite"},[_vm._m(0),_vm._v(" "),_c('img',{staticClass:"image-comic",attrs:{"src":this.data.thumbnail.path + '.' + this.data.thumbnail.extension}}),_vm._v(" "),_c('p',[_vm._v(_vm._s(this.data.title))])])}
+__vue__options__.staticRenderFns = [function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"box-ico-trash"},[_c('i',{staticClass:"icon-garbage"})])}]
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-d1155e8e", __vue__options__)
+    hotAPI.createRecord("data-v-586dcc33", __vue__options__)
   } else {
-    hotAPI.reload("data-v-d1155e8e", __vue__options__)
+    hotAPI.reload("data-v-586dcc33", __vue__options__)
   }
 })()}
 },{"vue":25,"vue-hot-reload-api":21}],12:[function(require,module,exports){
@@ -436,6 +439,7 @@ exports.default = {
 
     computed: {
         openComicsHero: function openComicsHero(info) {
+            this.$store.state.isLoad = false;
             this.$store.state.getComicsByHero(this.$http, info.data.id);
         }
     }
@@ -444,16 +448,16 @@ exports.default = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"hero"},[_c('v-row',[_c('v-col',{attrs:{"xs12":"","sm6":""}},[_c('div',{staticClass:"avatar-box"},[_c('img',{staticClass:"avatar-hero",attrs:{"src":this.data.thumbnail.path + '.' + this.data.thumbnail.extension}})])]),_vm._v(" "),_c('v-col',{attrs:{"xs12":"","sm6":""}},[_c('div',{staticClass:"primary-info"},[_c('h3',[_vm._v(_vm._s(this.data.name))]),_vm._v(" "),(this.data.description)?_c('p',[_vm._v(_vm._s(this.data.description))]):_c('p',[_vm._v("This character does not have an official description of marvel we invite you to consult the information again in a few days ...")]),_vm._v(" "),_c('a',{staticClass:"btn--light-flat-focused btn btn--large btn--raised marvel-btn",attrs:{"href":"#"},on:{"click":function($event){_vm.openComicsHero(this.data.name)}}},[_c('span',[_vm._v("View More")])])])])],1),_vm._v(" "),_c('v-row',{staticClass:"additional-info"},[_c('h4',[_vm._v("Related comics")]),_vm._v(" "),(this.data.comics.items.length == 0)?_c('p',[_vm._v("This character still has no related comics, we invite you to watch for the new news")]):_vm._e(),_vm._v(" "),_c('ul',_vm._l((_vm.relatedFilter(this.data.comics.items)),function(comic){return _c('li',[_c('p',[_vm._v(" "+_vm._s(comic.name))])])}))])],1)}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"hero"},[_c('v-row',[_c('v-col',{attrs:{"xs12":"","sm6":""}},[_c('div',{staticClass:"avatar-box"},[_c('img',{staticClass:"avatar-hero",attrs:{"src":this.data.thumbnail.path + '.' + this.data.thumbnail.extension}})])]),_vm._v(" "),_c('v-col',{attrs:{"xs12":"","sm6":""}},[_c('div',{staticClass:"primary-info"},[_c('h3',[_vm._v(_vm._s(this.data.name))]),_vm._v(" "),(this.data.description)?_c('p',[_vm._v(_vm._s(this.data.description))]):_c('p',[_vm._v("This character does not have an official description of marvel we invite you to consult the information again in a few days ...")]),_vm._v(" "),_c('a',{staticClass:"btn--light-flat-focused btn btn--large btn--raised marvel-btn",attrs:{"href":"#"},on:{"click":function($event){_vm.openComicsHero(this.data.name)}}},[_c('span',[_vm._v("View More ")])])])])],1),_vm._v(" "),_c('v-row',{staticClass:"additional-info"},[_c('h4',[_vm._v("Related comics")]),_vm._v(" "),(this.data.comics.items.length == 0)?_c('p',[_vm._v("This character still has no related comics, we invite you to watch for the new news")]):_vm._e(),_vm._v(" "),_c('ul',_vm._l((_vm.relatedFilter(this.data.comics.items)),function(comic){return _c('li',[_c('p',[_vm._v(" "+_vm._s(comic.name))])])}))])],1)}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-74296d02", __vue__options__)
+    hotAPI.createRecord("data-v-40b97f70", __vue__options__)
   } else {
-    hotAPI.reload("data-v-74296d02", __vue__options__)
+    hotAPI.reload("data-v-40b97f70", __vue__options__)
   }
 })()}
 },{"vue":25,"vue-hot-reload-api":21}],13:[function(require,module,exports){
@@ -468,22 +472,32 @@ exports.default = {
         return {
             comicsByHero: this.$store.state.comicsByHero
         };
+    },
+
+    methods: {
+        removeModal: function removeModal() {
+            this.$store.state.comicsByHero.pop();
+        },
+        addFavourite: function addFavourite() {
+            this.$store.state.myFavorites.push(this.$store.state.comicsByHero[0]);
+            this.$store.state.comicsByHero.pop();
+        }
     }
 };
 })()
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_vm._v("\n    "+_vm._s(_vm.comicsByHero)+"\n")])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('transition',{attrs:{"name":"custom-classes-transition","enter-active-class":"animated bounceInDown","leave-active-class":"animated bounceOutUp"}},[(_vm.comicsByHero.length > 0)?_c('div',{staticClass:"bg-modal"},[_c('div',{staticClass:"content-modal"},[_c('div',{staticClass:"top"},[_c('v-row',[_c('v-col',{staticClass:"image-comic",attrs:{"xs12":"xs12","sm4":""}},[_c('img',{attrs:{"src":_vm.comicsByHero[0].thumbnail.path + '.' + _vm.comicsByHero[0].thumbnail.extension}})]),_vm._v(" "),_c('v-col',{staticClass:"comic-info",attrs:{"xs12":"xs12","sm8":""}},[_c('i',{staticClass:"cancel icon-cancel",on:{"click":_vm.removeModal}}),_vm._v(" "),_c('h3',[_vm._v(_vm._s(_vm.comicsByHero[0].title))]),_vm._v(" "),_c('div',{staticClass:"box-info"},[(_vm.comicsByHero[0].description)?_c('p',[_vm._v(_vm._s(_vm.comicsByHero[0].description))]):_c('p',[_vm._v("This comic does not have an official description, we invite you to consult later")])])])],1)],1),_vm._v(" "),_c('div',{staticClass:"bottom"},[_c('div',{staticClass:"btn-modal",on:{"click":function($event){_vm.addFavourite()}}},[_c('span',{staticClass:"icono-btn"},[_c('div',{staticClass:"layer-cap-1 red"},[_c('div',{staticClass:"layer-cap-2"},[_c('span',{staticClass:"icon-star-in-black-of-five-points-shape"})])])]),_vm._v(" "),_c('p',[_vm._v("Add to favourites")])]),_vm._v(" "),_c('div',{staticClass:"btn-modal gray"},[_c('span',{staticClass:"icono-btn cart"},[_c('i',{staticClass:"icon-black-cart"})]),_vm._v(" "),_c('p',[_vm._v("Buy for "+_vm._s(_vm.comicsByHero[0].prices[0].price))])])])])]):_vm._e()])}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-f9f8e338", __vue__options__)
+    hotAPI.createRecord("data-v-1154afac", __vue__options__)
   } else {
-    hotAPI.reload("data-v-f9f8e338", __vue__options__)
+    hotAPI.reload("data-v-1154afac", __vue__options__)
   }
 })()}
 },{"vue":25,"vue-hot-reload-api":21}],14:[function(require,module,exports){
@@ -511,9 +525,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4bb592e9", __vue__options__)
+    hotAPI.createRecord("data-v-94aab63a", __vue__options__)
   } else {
-    hotAPI.reload("data-v-4bb592e9", __vue__options__)
+    hotAPI.reload("data-v-94aab63a", __vue__options__)
   }
 })()}
 },{"vue":25,"vue-hot-reload-api":21}],15:[function(require,module,exports){
@@ -554,6 +568,7 @@ exports.default = new _vuex2.default.Store({
         heroes: [],
         isLoad: false,
         comicsByHero: [],
+        myFavorites: [],
         addHeroes: function addHeroes(data) {
             for (var i = this.heroes.length; i > 0; i--) {
                 this.heroes.pop();
@@ -601,6 +616,7 @@ exports.default = new _vuex2.default.Store({
             var _this3 = this;
 
             http.get(_Constants.CONFIG.URL_BASE + '/' + id + '/comics?format=comic&formatType=comic&ts=1&apikey=' + _Constants.CONFIG.API_KEY + '&hash=' + _Constants.CONFIG.HASH).then(function (response) {
+                _this3.isLoad = true;
                 _this3.comicsByHero.push(response.body.data.results[0]);
             }, function (response) {
                 // error callback

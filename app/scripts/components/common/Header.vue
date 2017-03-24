@@ -5,7 +5,7 @@
                 <v-col xs12="xs12" >
                     <v-row>
                         <v-col xs12="xs12" sm3="sm3">
-                           <!-- <img class="logo" src="./img/logo.png"/>-->
+                           <img class="logo" src="./img/logo.png"/>
                         </v-col>
                         <v-col xs12="xs12" sm6="sm6">
                             <box-search></box-search>
