@@ -8,19 +8,25 @@
             </div>
             <h3>My favourites</h3>
         </div>
-        <div v-if="favourites.length > 0">
-            <favourite v-for="favorite in favourites" :data="favorite"></favourite>
+        <div v-if="$store.state.myFavorites.length > 0">
+            <favourite v-for="favorite in $store.state.myFavorites" :data="favorite"></favourite>
         </div>
     </div>
 </template>
 
 <script>
     import Favourite from './Favorite.vue';
+
+
+    /**
+     * The aside component
+     * @author: <cristianqr22@gmail.com> Cristian Quintero
+     * @date: 03 - 24 - 2017
+    */
     export default {
         components: { Favourite },
         data () {
             return {
-                favourites: this.$store.state.myFavorites
             }
         },
     }

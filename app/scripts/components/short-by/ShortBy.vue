@@ -16,10 +16,20 @@
 </template>
 
 <script>
+
+    /**
+     * The Select component for short by
+     * @author: <cristianqr22@gmail.com> Cristian Quintero
+     * @date: 03 - 24 - 2017
+    */
     export default {
         data () {
             return {
-                states: ["ewfsd","fsdfsd","fsdf","fsd","fsd"]
+                /**
+                    @type {Array}
+                    Model items by select
+                */                
+                states: ["Item 1","Item 2","Item 3","Item 4","Item 5"]
             }
         }
     }

@@ -21,9 +21,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-b9c10554", __vue__options__)
+    hotAPI.createRecord("data-v-21689d5c", __vue__options__)
   } else {
-    hotAPI.reload("data-v-b9c10554", __vue__options__)
+    hotAPI.reload("data-v-21689d5c", __vue__options__)
   }
 })()}
 },{"vue":25,"vue-hot-reload-api":21}],2:[function(require,module,exports){
@@ -84,7 +84,7 @@ new _vue2.default({
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 /**
  * Constants APP
@@ -93,9 +93,14 @@ Object.defineProperty(exports, "__esModule", {
 */
 
 var CONFIG = exports.CONFIG = {
-  URL_BASE: 'https://gateway.marvel.com/v1/public/characters',
-  API_KEY: '62ed700024d09af2b0eda474e3a72df2',
-  HASH: '2dc9b554e28ec2ebf77c298e7c6478ff'
+    URL_BASE: 'https://gateway.marvel.com/v1/public/characters',
+    API_KEY: '62ed700024d09af2b0eda474e3a72df2',
+    HASH: '2dc9b554e28ec2ebf77c298e7c6478ff'
+};
+
+var SESSION_STORAGE = exports.SESSION_STORAGE = {
+    SESSION_KEY: "LIST_HEROES",
+    SESSION_FAVORITES: "LIST_FAVORITES"
 };
 
 },{}],4:[function(require,module,exports){
@@ -103,7 +108,7 @@ var CONFIG = exports.CONFIG = {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _ShortBy = require('./components/short-by/ShortBy.vue');
@@ -118,26 +123,29 @@ var _Aside = require('./components/favourite/Aside.vue');
 
 var _Aside2 = _interopRequireDefault(_Aside);
 
+var _Constants = require('./Constants');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {
-    components: { ShortBy: _ShortBy2.default, Hero: _Hero2.default, AsideLeft: _Aside2.default },
+  components: { ShortBy: _ShortBy2.default, Hero: _Hero2.default, AsideLeft: _Aside2.default },
 
-    created: function created() {
-        this.$store.state.setHeroes(this.$http);
-    },
-    data: function data() {
-        return {
-            heroes: this.$store.state.heroes,
-            paginate: ['heroes']
-        };
-    },
-
-    methods: {
-        click: function click() {
-            this.heroes[2].name = "my Name";
-        }
+  created: function created() {
+    this.$store.state.setHeroes(this.$http);
+    var sorageComics = sessionStorage.getItem(_Constants.SESSION_STORAGE.SESSION_FAVORITES);
+    if (sorageComics) {
+      var storagParse = JSON.parse(sorageComics);
+      for (var i = 0; i < storagParse.length; i++) {
+        this.$store.state.myFavorites.push(storagParse[i]);
+      }
     }
+  },
+  data: function data() {
+    return {
+      heroes: this.$store.state.heroes,
+      paginate: ['heroes']
+    };
+  }
 };
 })()
 if (module.exports.__esModule) module.exports = module.exports.default
@@ -150,12 +158,12 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-0a3b7e80", __vue__options__)
+    hotAPI.createRecord("data-v-20202474", __vue__options__)
   } else {
-    hotAPI.reload("data-v-0a3b7e80", __vue__options__)
+    hotAPI.reload("data-v-20202474", __vue__options__)
   }
 })()}
-},{"./components/favourite/Aside.vue":10,"./components/hero/Hero.vue":12,"./components/short-by/ShortBy.vue":14,"vue":25,"vue-hot-reload-api":21}],5:[function(require,module,exports){
+},{"./Constants":3,"./components/favourite/Aside.vue":10,"./components/hero/Hero.vue":12,"./components/short-by/ShortBy.vue":14,"vue":25,"vue-hot-reload-api":21}],5:[function(require,module,exports){
 ;(function(){
 'use strict';
 
@@ -195,9 +203,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-63b4eb2b", __vue__options__)
+    hotAPI.createRecord("data-v-a2e06836", __vue__options__)
   } else {
-    hotAPI.reload("data-v-63b4eb2b", __vue__options__)
+    hotAPI.reload("data-v-a2e06836", __vue__options__)
   }
 })()}
 },{"./components/common/Footer.vue":8,"./components/common/Header.vue":9,"./components/modal/Modal.vue":13,"vue":25,"vue-hot-reload-api":21}],6:[function(require,module,exports){
@@ -258,13 +266,13 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = {
     data: function data() {
         return {
-            search: ''
+            result: ''
         };
     },
 
     methods: {
-        searchResult: function searchResult() {
-            this.$store.state.updateHeroes(this.$http, this.search);
+        search: function search() {
+            this.$store.state.updateHeroes(this.$http, this.result);
         }
     }
 };
@@ -272,16 +280,16 @@ exports.default = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('div',{staticClass:"box-search"},[_c('i',{staticClass:"icon-magnifier-tool"}),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.search),expression:"search"}],staticClass:"search",attrs:{"type":"text"},domProps:{"value":(_vm.search)},on:{"blur":_vm.searchResult,"input":function($event){if($event.target.composing){ return; }_vm.search=$event.target.value}}})])])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_c('div',{staticClass:"box-search"},[_c('i',{staticClass:"icon-magnifier-tool"}),_vm._v(" "),_c('input',{directives:[{name:"model",rawName:"v-model",value:(_vm.result),expression:"result"}],staticClass:"search",attrs:{"type":"text"},domProps:{"value":(_vm.result)},on:{"blur":_vm.search,"keyup":function($event){if(!('button' in $event)&&_vm._k($event.keyCode,"enter",13)){ return null; }_vm.search($event)},"input":function($event){if($event.target.composing){ return; }_vm.result=$event.target.value}}})])])}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-47bfce65", __vue__options__)
+    hotAPI.createRecord("data-v-3a0f6d2a", __vue__options__)
   } else {
-    hotAPI.reload("data-v-47bfce65", __vue__options__)
+    hotAPI.reload("data-v-3a0f6d2a", __vue__options__)
   }
 })()}
 },{"vue":25,"vue-hot-reload-api":21}],8:[function(require,module,exports){
@@ -307,9 +315,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-12a52058", __vue__options__)
+    hotAPI.createRecord("data-v-6a726012", __vue__options__)
   } else {
-    hotAPI.reload("data-v-12a52058", __vue__options__)
+    hotAPI.reload("data-v-6a726012", __vue__options__)
   }
 })()}
 },{"vue":25,"vue-hot-reload-api":21}],9:[function(require,module,exports){
@@ -344,9 +352,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-33d7844a", __vue__options__)
+    hotAPI.createRecord("data-v-e8b677f8", __vue__options__)
   } else {
-    hotAPI.reload("data-v-33d7844a", __vue__options__)
+    hotAPI.reload("data-v-e8b677f8", __vue__options__)
   }
 })()}
 },{"../box-search/BoxSearch.vue":7,"vue":25,"vue-hot-reload-api":21}],10:[function(require,module,exports){
@@ -366,28 +374,76 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.default = {
     components: { Favourite: _Favorite2.default },
     data: function data() {
-        return {
-            favourites: this.$store.state.myFavorites
-        };
+        return {};
     }
 };
 })()
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_vm._m(0),_vm._v(" "),(_vm.favourites.length > 0)?_c('div',_vm._l((_vm.favourites),function(favorite){return _c('favourite',{attrs:{"data":favorite}})})):_vm._e()])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',[_vm._m(0),_vm._v(" "),(_vm.$store.state.myFavorites.length > 0)?_c('div',_vm._l((_vm.$store.state.myFavorites),function(favorite){return _c('favourite',{attrs:{"data":favorite}})})):_vm._e()])}
 __vue__options__.staticRenderFns = [function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"box-title-aside"},[_c('div',{staticClass:"layer-cap-1 red"},[_c('div',{staticClass:"layer-cap-2"},[_c('span',{staticClass:"icon-star-in-black-of-five-points-shape"})])]),_vm._v(" "),_c('h3',[_vm._v("My favourites")])])}]
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-12787631", __vue__options__)
+    hotAPI.createRecord("data-v-a816a12a", __vue__options__)
   } else {
-    hotAPI.reload("data-v-12787631", __vue__options__)
+    hotAPI.reload("data-v-a816a12a", __vue__options__)
   }
 })()}
 },{"./Favorite.vue":11,"vue":25,"vue-hot-reload-api":21}],11:[function(require,module,exports){
+;(function(){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _stringify = require('babel-runtime/core-js/json/stringify');
+
+var _stringify2 = _interopRequireDefault(_stringify);
+
+var _Constants = require('../../Constants');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+    props: ['data'],
+    data: function data() {
+        return {};
+    },
+
+    methods: {
+        removeFavorite: function removeFavorite() {
+            for (var i = 0; i < this.$store.state.myFavorites.length; i++) {
+                if (this.$store.state.myFavorites[i].id === this.data.id) {
+                    this.$store.state.myFavorites.splice(i, 1);
+                }
+            }
+            var stringResponse = (0, _stringify2.default)(this.$store.state.myFavorites);
+            sessionStorage.setItem(_Constants.SESSION_STORAGE.SESSION_FAVORITES, stringResponse);
+        }
+    }
+};
+})()
+if (module.exports.__esModule) module.exports = module.exports.default
+var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
+if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"box-favourite"},[_c('div',{staticClass:"box-ico-trash",on:{"click":function($event){_vm.removeFavorite()}}},[_c('i',{staticClass:"icon-garbage"})]),_vm._v(" "),_c('img',{staticClass:"image-comic",attrs:{"src":this.data.thumbnail.path + '.' + this.data.thumbnail.extension}}),_vm._v(" "),_c('p',[_vm._v(_vm._s(this.data.title))])])}
+__vue__options__.staticRenderFns = []
+if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), true)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-d1155e8e", __vue__options__)
+  } else {
+    hotAPI.reload("data-v-d1155e8e", __vue__options__)
+  }
+})()}
+},{"../../Constants":3,"babel-runtime/core-js/json/stringify":16,"vue":25,"vue-hot-reload-api":21}],12:[function(require,module,exports){
 ;(function(){
 'use strict';
 
@@ -398,49 +454,20 @@ exports.default = {
     props: ['data'],
     data: function data() {
         return {};
-    }
-};
-})()
-if (module.exports.__esModule) module.exports = module.exports.default
-var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
-if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"box-favourite"},[_vm._m(0),_vm._v(" "),_c('img',{staticClass:"image-comic",attrs:{"src":this.data.thumbnail.path + '.' + this.data.thumbnail.extension}}),_vm._v(" "),_c('p',[_vm._v(_vm._s(this.data.title))])])}
-__vue__options__.staticRenderFns = [function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"box-ico-trash"},[_c('i',{staticClass:"icon-garbage"})])}]
-if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), true)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-586dcc33", __vue__options__)
-  } else {
-    hotAPI.reload("data-v-586dcc33", __vue__options__)
-  }
-})()}
-},{"vue":25,"vue-hot-reload-api":21}],12:[function(require,module,exports){
-;(function(){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.default = {
-    props: ['data'],
-    data: function data() {
-        return {
-            relatedFilter: function relatedFilter(items) {
-                return items.filter(function (item, index) {
-                    if (index < 4) {
-                        return item;
-                    }
-                });
-            }
-        };
     },
 
-    computed: {
-        openComicsHero: function openComicsHero(info) {
+    methods: {
+        relatedFilter: function relatedFilter() {
+            return this.data.comics.items.filter(function (item, index) {
+                if (index < 4) {
+                    return item;
+                }
+            });
+        },
+
+        openComicsHero: function openComicsHero() {
             this.$store.state.isLoad = false;
-            this.$store.state.getComicsByHero(this.$http, info.data.id);
+            this.$store.state.getComicsByHero(this.$http, this.data.id);
         }
     }
 };
@@ -448,25 +475,34 @@ exports.default = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"hero"},[_c('v-row',[_c('v-col',{attrs:{"xs12":"","sm6":""}},[_c('div',{staticClass:"avatar-box"},[_c('img',{staticClass:"avatar-hero",attrs:{"src":this.data.thumbnail.path + '.' + this.data.thumbnail.extension}})])]),_vm._v(" "),_c('v-col',{attrs:{"xs12":"","sm6":""}},[_c('div',{staticClass:"primary-info"},[_c('h3',[_vm._v(_vm._s(this.data.name))]),_vm._v(" "),(this.data.description)?_c('p',[_vm._v(_vm._s(this.data.description))]):_c('p',[_vm._v("This character does not have an official description of marvel we invite you to consult the information again in a few days ...")]),_vm._v(" "),_c('a',{staticClass:"btn--light-flat-focused btn btn--large btn--raised marvel-btn",attrs:{"href":"#"},on:{"click":function($event){_vm.openComicsHero(this.data.name)}}},[_c('span',[_vm._v("View More ")])])])])],1),_vm._v(" "),_c('v-row',{staticClass:"additional-info"},[_c('h4',[_vm._v("Related comics")]),_vm._v(" "),(this.data.comics.items.length == 0)?_c('p',[_vm._v("This character still has no related comics, we invite you to watch for the new news")]):_vm._e(),_vm._v(" "),_c('ul',_vm._l((_vm.relatedFilter(this.data.comics.items)),function(comic){return _c('li',[_c('p',[_vm._v(" "+_vm._s(comic.name))])])}))])],1)}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"hero"},[_c('v-row',[_c('v-col',{attrs:{"xs12":"","sm6":""}},[_c('div',{staticClass:"avatar-box"},[_c('img',{staticClass:"avatar-hero",attrs:{"src":this.data.thumbnail.path + '.' + this.data.thumbnail.extension}})])]),_vm._v(" "),_c('v-col',{attrs:{"xs12":"","sm6":""}},[_c('div',{staticClass:"primary-info"},[_c('h3',[_vm._v(_vm._s(this.data.name))]),_vm._v(" "),(this.data.description)?_c('p',[_vm._v(_vm._s(this.data.description))]):_c('p',[_vm._v("This character does not have an official description of marvel we invite you to consult the information again in a few days ...")]),_vm._v(" "),(this.data.comics.items.length > 0)?_c('a',{staticClass:"btn--light-flat-focused btn btn--large btn--raised marvel-btn red",attrs:{"href":"#"},on:{"click":function($event){_vm.openComicsHero()}}},[_c('span',[_vm._v("View More ")])]):_c('a',{staticClass:"btn btn--large btn--default btn--disabled btn--light btn--raised marvel-btn disable",attrs:{"href":"#"}},[_c('span',[_vm._v("View More ")])])])])],1),_vm._v(" "),_c('v-row',{staticClass:"additional-info"},[_c('h4',[_vm._v("Related comics")]),_vm._v(" "),(this.data.comics.items.length == 0)?_c('p',[_vm._v("This character still has no related comics, we invite you to watch for the new news")]):_vm._e(),_vm._v(" "),_c('ul',_vm._l((_vm.relatedFilter()),function(comic){return _c('li',[_c('p',[_vm._v(" "+_vm._s(comic.name))])])}))])],1)}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-40b97f70", __vue__options__)
+    hotAPI.createRecord("data-v-74296d02", __vue__options__)
   } else {
-    hotAPI.reload("data-v-40b97f70", __vue__options__)
+    hotAPI.reload("data-v-74296d02", __vue__options__)
   }
 })()}
 },{"vue":25,"vue-hot-reload-api":21}],13:[function(require,module,exports){
 ;(function(){
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+
+var _stringify = require('babel-runtime/core-js/json/stringify');
+
+var _stringify2 = _interopRequireDefault(_stringify);
+
+var _Constants = require('../../Constants');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 exports.default = {
     data: function data() {
         return {
@@ -478,8 +514,11 @@ exports.default = {
         removeModal: function removeModal() {
             this.$store.state.comicsByHero.pop();
         },
+
         addFavourite: function addFavourite() {
             this.$store.state.myFavorites.push(this.$store.state.comicsByHero[0]);
+            var stringResponse = (0, _stringify2.default)(this.$store.state.myFavorites);
+            sessionStorage.setItem(_Constants.SESSION_STORAGE.SESSION_FAVORITES, stringResponse);
             this.$store.state.comicsByHero.pop();
         }
     }
@@ -495,12 +534,12 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-1154afac", __vue__options__)
+    hotAPI.createRecord("data-v-f9f8e338", __vue__options__)
   } else {
-    hotAPI.reload("data-v-1154afac", __vue__options__)
+    hotAPI.reload("data-v-f9f8e338", __vue__options__)
   }
 })()}
-},{"vue":25,"vue-hot-reload-api":21}],14:[function(require,module,exports){
+},{"../../Constants":3,"babel-runtime/core-js/json/stringify":16,"vue":25,"vue-hot-reload-api":21}],14:[function(require,module,exports){
 ;(function(){
 "use strict";
 
@@ -510,7 +549,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.default = {
     data: function data() {
         return {
-            states: ["ewfsd", "fsdfsd", "fsdf", "fsd", "fsd"]
+            states: ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"]
         };
     }
 };
@@ -525,9 +564,9 @@ if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-94aab63a", __vue__options__)
+    hotAPI.createRecord("data-v-4bb592e9", __vue__options__)
   } else {
-    hotAPI.reload("data-v-94aab63a", __vue__options__)
+    hotAPI.reload("data-v-4bb592e9", __vue__options__)
   }
 })()}
 },{"vue":25,"vue-hot-reload-api":21}],15:[function(require,module,exports){
@@ -557,18 +596,46 @@ var _Constants = require('../../Constants');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var SESSION_KEY = "LIST_HEROES";
-var SESSION_FAVORITES = "LIST_FAVORITES";
-
 _vue2.default.use(_vuex2.default);
 _vue2.default.use(_vueResource2.default);
 
+/**
+ * The Store for Heroes
+ * @author: <cristianqr22@gmail.com> Cristian Quintero
+ * @date: 03 - 24 - 2017
+*/
 exports.default = new _vuex2.default.Store({
     state: {
+
+        /**
+            @type {Array}
+            Model items by heroes
+        */
         heroes: [],
+
+        /**
+            @type {Boolean}
+            Parameter to display the loader
+        */
         isLoad: false,
+
+        /**
+            @type {Array}
+            Model items in comics by hero
+        */
         comicsByHero: [],
+
+        /**
+            @type {Array}
+            Model items in favorites comics
+        */
         myFavorites: [],
+
+        /**
+        * @type method
+        * @param: {Array} data --> The array heroes
+        * @description add heroes in array
+        */
         addHeroes: function addHeroes(data) {
             for (var i = this.heroes.length; i > 0; i--) {
                 this.heroes.pop();
@@ -578,15 +645,22 @@ exports.default = new _vuex2.default.Store({
             }
             this.isLoad = true;
         },
+
+
+        /**
+        * @type method
+        * @param: {Method} http --> Method for making http requests
+        * @description Consult api and add heroes
+        */
         setHeroes: function setHeroes(http) {
             var _this = this;
 
-            var sorageHeroes = sessionStorage.getItem(SESSION_KEY);
+            var sorageHeroes = sessionStorage.getItem(_Constants.SESSION_STORAGE.SESSION_KEY);
             if (!sorageHeroes) {
                 http.get(_Constants.CONFIG.URL_BASE + '?limit=100&ts=1&apikey=' + _Constants.CONFIG.API_KEY + '&hash=' + _Constants.CONFIG.HASH).then(function (response) {
                     _this.addHeroes(response.body.data.results);
                     var stringResponse = (0, _stringify2.default)(response.body.data.results);
-                    sessionStorage.setItem(SESSION_KEY, stringResponse);
+                    sessionStorage.setItem(_Constants.SESSION_STORAGE.SESSION_KEY, stringResponse);
                 }, function (response) {
                     // error callback
                     console.log(response);
@@ -595,10 +669,18 @@ exports.default = new _vuex2.default.Store({
                 this.addHeroes(JSON.parse(sorageHeroes));
             }
         },
+
+
+        /**
+        * @type method
+        * @param: {Method} http --> Method for making http requests
+        * @param: {String} search --> String for consult api       
+        * @description Consult api and search by result from input
+        */
         updateHeroes: function updateHeroes(http, search) {
             var _this2 = this;
 
-            var sorageHeroes = sessionStorage.getItem(SESSION_KEY);
+            var sorageHeroes = sessionStorage.getItem(_Constants.SESSION_STORAGE.SESSION_KEY);
             if (search != "") {
                 var starWith = search.slice(0, 2);
                 this.isLoad = false;
@@ -612,12 +694,22 @@ exports.default = new _vuex2.default.Store({
                 this.addHeroes(JSON.parse(sorageHeroes));
             }
         },
+
+
+        /**
+        * @type method
+        * @param: {Method} http --> Method for making http requests
+        * @param: {Integer} id --> the character id      
+        * @description Consult api with character id an set in list
+        */
         getComicsByHero: function getComicsByHero(http, id) {
             var _this3 = this;
 
             http.get(_Constants.CONFIG.URL_BASE + '/' + id + '/comics?format=comic&formatType=comic&ts=1&apikey=' + _Constants.CONFIG.API_KEY + '&hash=' + _Constants.CONFIG.HASH).then(function (response) {
                 _this3.isLoad = true;
-                _this3.comicsByHero.push(response.body.data.results[0]);
+                if (response.body.data.results.length > 0) {
+                    _this3.comicsByHero.push(response.body.data.results[0]);
+                }
             }, function (response) {
                 // error callback
                 console.log(response);

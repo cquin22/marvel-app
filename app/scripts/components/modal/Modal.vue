@@ -42,18 +42,41 @@
 
 <script>
 
+    import { SESSION_STORAGE }  from '../../Constants';
+
+    /**
+     * The Modal component
+     * @author: <cristianqr22@gmail.com> Cristian Quintero
+     * @date: 03 - 24 - 2017
+    */
     export default {
         data () {
             return {
+                /**
+                    @type {Array}
+                    Model commics by hero
+                */
                 comicsByHero: this.$store.state.comicsByHero
             }
         },
         methods: {
+
+           /**
+            * @type method
+            * @description Remove modal and empty comicsByHero
+           */  
             removeModal: function(){
                 this.$store.state.comicsByHero.pop();
             },
+
+           /**
+            * @type method
+            * @description Add comit to favourite list
+           */              
             addFavourite: function(){
                 this.$store.state.myFavorites.push(this.$store.state.comicsByHero[0]);
+                var stringResponse = JSON.stringify(this.$store.state.myFavorites);
+                sessionStorage.setItem(SESSION_STORAGE.SESSION_FAVORITES, stringResponse);
                 this.$store.state.comicsByHero.pop();
             }
         }
